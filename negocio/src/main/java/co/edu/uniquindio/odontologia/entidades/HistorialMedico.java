@@ -14,8 +14,15 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class HistorialMedico implements Serializable {
+  /*  @Id
+    @EqualsAndHashCode.Include
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Paciente paciente;*/
     @Id
     @EqualsAndHashCode.Include
+    private Integer id;
+
     @OneToOne
     @PrimaryKeyJoinColumn
     private Paciente paciente;
