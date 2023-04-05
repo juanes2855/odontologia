@@ -2,9 +2,9 @@ package co.edu.uniquindio.odontologia.entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -14,6 +14,23 @@ import java.io.Serializable;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Concentimiento implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Integer id;
 
+
+    @Column(nullable = false,length = 100)
+    private String nombre;
+
+    @Column(nullable = false)
+    private LocalDate fecha;
+
+    @Column(nullable = false)
+    private String procedimiento;
+
+    @Column(nullable = false)
+    private String riesgos;
+
+    @OneToOne(mappedBy = "concentimiento")
+    private HistorialMedico historialMedico;
 }

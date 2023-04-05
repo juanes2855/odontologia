@@ -2,8 +2,7 @@ package co.edu.uniquindio.odontologia.entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -14,6 +13,20 @@ import java.io.Serializable;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Tratamiento implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Integer id;
+
+    @Column(length = 200)
+    private String nombre;
+
+    private String descripcion;
+
+    @OneToOne(mappedBy = "tratamiento")
+    private HistorialCita historialCita;
+
+    @OneToOne(mappedBy = "tratamiento")
+    private HistorialTratamiento historialTratamiento;
+
 
 }
