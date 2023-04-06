@@ -27,6 +27,9 @@ public class Tratamiento implements Serializable {
 
     @OneToOne(mappedBy = "tratamiento")
     private HistorialTratamiento historialTratamiento;
-
-
+    @Builder
+    public Tratamiento(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
 }

@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Getter
@@ -22,7 +23,7 @@ public class Agenda implements Serializable {
 
     @Positive
     @Column(nullable = false)
-    private String hora;
+    private LocalTime hora;
 
     @Column(nullable = false)
     private LocalDate fecha;
@@ -36,4 +37,11 @@ public class Agenda implements Serializable {
     @OneToOne(mappedBy = "agenda")
     private HistorialCita historialCita;
 
+    @Builder
+    public Agenda(LocalTime hora, LocalDate fecha, String estado, Odontologo odontologo) {
+        this.hora = hora;
+        this.fecha = fecha;
+        this.estado = estado;
+        this.odontologo = odontologo;
+    }
 }

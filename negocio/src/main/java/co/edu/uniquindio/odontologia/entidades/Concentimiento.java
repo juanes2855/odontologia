@@ -33,4 +33,12 @@ public class Concentimiento implements Serializable {
 
     @OneToOne(mappedBy = "concentimiento")
     private HistorialMedico historialMedico;
+
+    @Builder
+    public Concentimiento(String nombre, LocalDate fecha, String procedimiento, String riesgos) {
+        this.nombre = nombre;
+        this.fecha = fecha;
+        this.procedimiento = procedimiento;
+        this.riesgos = riesgos;
+    }
 }

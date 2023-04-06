@@ -63,4 +63,16 @@ public class Paciente implements Serializable {
     @OneToOne(mappedBy = "paciente")
     private HistorialMedico historialMedico;
 
+    @Builder
+    public Paciente(Integer documento, String nombre, String telefono, String direccion, String genero, LocalDate fechaNacimiento, String correo, String password) {
+        this.documento = documento;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.genero = genero;
+        this.fechaNacimiento = fechaNacimiento;
+        this.fechaRegistro = LocalDate.now();
+        this.correo = correo;
+        this.password = password;
+    }
 }

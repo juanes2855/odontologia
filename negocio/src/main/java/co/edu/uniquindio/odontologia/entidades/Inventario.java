@@ -29,4 +29,11 @@ public class Inventario implements Serializable {
 
     private Integer cantidad;
 
+    @Builder
+    public Inventario(String nombre, String marca, String registro, Integer cantidad) {
+        this.nombre = nombre;
+        this.marca = marca;
+        this.registro = registro;
+        this.cantidad = cantidad;
+    }
 }

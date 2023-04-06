@@ -35,4 +35,13 @@ public class InfoBasica implements Serializable {
 
     @OneToOne(mappedBy = "infoBasica")
     private HistorialMedico historialMedico;
+
+    @Builder
+    public InfoBasica(String nombreAcompanante, String telefonoAcompante, String motivo, String antecedentesMedicosPersonales, String estomatologico) {
+        this.nombreAcompanante = nombreAcompanante;
+        this.telefonoAcompante = telefonoAcompante;
+        this.motivo = motivo;
+        this.antecedentesMedicosPersonales = antecedentesMedicosPersonales;
+        this.estomatologico = estomatologico;
+    }
 }

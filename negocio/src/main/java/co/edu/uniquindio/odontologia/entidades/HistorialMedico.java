@@ -14,17 +14,10 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class HistorialMedico implements Serializable {
-  /*  @Id
-    @EqualsAndHashCode.Include
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private Paciente paciente;*/
     @Id
     @EqualsAndHashCode.Include
-    private Integer id;
-
     @OneToOne
-    @PrimaryKeyJoinColumn
+    @JoinColumn(name = "doc_paciente")
     private Paciente paciente;
 
     private LocalDate fechaInicial;
@@ -36,6 +29,12 @@ public class HistorialMedico implements Serializable {
     @OneToOne
     private Concentimiento concentimiento;
 
-
-
+    @Builder
+    public HistorialMedico(Paciente paciente, Concentimiento concentimiento, InfoBasica infoBasica) {
+        this.paciente = paciente;
+        this.fechaInicial = LocalDate.now();
+        this.horaInicial = LocalTime.now();
+        this.concentimiento = concentimiento;
+        this.infoBasica = infoBasica;
+    }
 }

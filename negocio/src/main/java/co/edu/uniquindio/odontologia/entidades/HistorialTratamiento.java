@@ -26,5 +26,10 @@ public class HistorialTratamiento implements Serializable {
     @OneToOne
     private Tratamiento tratamiento;
 
-
+    @Builder
+    public HistorialTratamiento(String estado, Paciente paciente, Tratamiento tratamiento) {
+        this.estado = estado;
+        this.paciente = paciente;
+        this.tratamiento = tratamiento;
+    }
 }

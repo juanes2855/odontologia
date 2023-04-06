@@ -25,4 +25,10 @@ public class Odontograma implements Serializable {
     @ManyToOne
     private Paciente paciente;
 
+    @Builder
+    public Odontograma(Integer numDiente, String descripcion, Paciente paciente) {
+        this.numDiente = numDiente;
+        this.descripcion = descripcion;
+        this.paciente = paciente;
+    }
 }

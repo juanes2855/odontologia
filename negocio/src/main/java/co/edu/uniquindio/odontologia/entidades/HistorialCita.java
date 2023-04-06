@@ -29,4 +29,12 @@ public class HistorialCita implements Serializable {
     @ManyToOne
     private Paciente paciente;
 
+    @Builder
+    public HistorialCita(String asistencia, String descripcion, Agenda agenda, Tratamiento tratamiento, Paciente paciente) {
+        this.asistencia = asistencia;
+        this.descripcion = descripcion;
+        this.agenda = agenda;
+        this.tratamiento = tratamiento;
+        this.paciente = paciente;
+    }
 }
