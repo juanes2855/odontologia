@@ -12,7 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Inventario implements Serializable {
+public class Instrumental implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
@@ -30,7 +30,7 @@ public class Inventario implements Serializable {
     private Integer cantidad;
 
     @Builder
-    public Inventario(String nombre, String marca, String registro, Integer cantidad) {
+    public Instrumental(String nombre, String marca, String registro, Integer cantidad) {
         this.nombre = nombre;
         this.marca = marca;
         this.registro = registro;
