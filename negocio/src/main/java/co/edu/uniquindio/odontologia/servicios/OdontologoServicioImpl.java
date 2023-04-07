@@ -143,7 +143,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public HistorialMedico actualizarHistorialMedico(HistorialMedico historialMedico) throws Exception {
-        Optional<HistorialMedico> guardado = historialMedicoRepo.findById(historialMedico.getPaciente().getDocumento());
+        Optional<HistorialMedico> guardado = historialMedicoRepo.findById(historialMedico.getId());
 
         if(guardado.isEmpty()){
             throw new Exception("El historial medico no existe");

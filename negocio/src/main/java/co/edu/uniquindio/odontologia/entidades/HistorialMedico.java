@@ -16,6 +16,8 @@ import java.time.LocalTime;
 public class HistorialMedico implements Serializable {
     @Id
     @EqualsAndHashCode.Include
+    private Integer id;
+
     @OneToOne
     @JoinColumn(name = "doc_paciente")
     private Paciente paciente;
