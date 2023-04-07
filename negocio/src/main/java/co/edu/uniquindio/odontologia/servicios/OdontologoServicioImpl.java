@@ -67,6 +67,17 @@ public class OdontologoServicioImpl implements OdontologoServicio {
     }
 
     @Override
+    public void eliminarAgenda(Integer id) throws Exception {
+        Optional<Agenda> guardado = agendaRepo.findById(id);
+
+        if(guardado.isEmpty()){
+            throw new Exception("La agenda no existe");
+        }
+
+        agendaRepo.delete(guardado.get());
+    }
+
+    @Override
     public Agenda obtenerAgenda(Integer idAgenda)  throws Exception {
         Optional<Agenda> guardado = agendaRepo.findById(idAgenda);
 
@@ -100,7 +111,13 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public void eliminarHistorialCita(Integer id) throws Exception {
+        Optional<HistorialCita> guardado = historialCitaRepo.findById(id);
 
+        if(guardado.isEmpty()){
+            throw new Exception("El historial Cita no existe");
+        }
+
+        historialCitaRepo.delete(guardado.get());
     }
 
     @Override
@@ -109,7 +126,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
     }
 
     @Override
-    public HistorialCita obtenerHistorialCita(Integer id) throws Exception{
+    public HistorialCita obtenerHistorialCita(Integer id) throws Exception {
         Optional<HistorialCita> guardado = historialCitaRepo.findById(id);
 
         if(guardado.isEmpty()){
@@ -137,7 +154,13 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public void eliminarHistorialMedico(Integer codigo) throws Exception {
+        Optional<HistorialMedico> guardado = historialMedicoRepo.findById(codigo);
 
+        if(guardado.isEmpty()){
+            throw new Exception("El historial medico no existe");
+        }
+
+        historialMedicoRepo.delete(guardado.get());
     }
 
     @Override
@@ -174,7 +197,13 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public void eliminarConcentimiento(Integer codigo) throws Exception {
+        Optional<Concentimiento> guardado = concentimientoRepo.findById(codigo);
 
+        if(guardado.isEmpty()){
+            throw new Exception("El concentimiento no existe");
+        }
+
+        concentimientoRepo.delete(guardado.get());
     }
 
     @Override
@@ -211,7 +240,13 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public void eliminarHistorialTratamiento(Integer codigo) throws Exception {
+        Optional<HistorialTratamiento> guardado = historialTratamientoRepo.findById(codigo);
 
+        if(guardado.isEmpty()){
+            throw new Exception("El historial de Tratamiento no existe");
+        }
+
+        historialTratamientoRepo.delete(guardado.get());
     }
 
     @Override
@@ -248,7 +283,13 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public void eliminarInfoBasica(Integer codigo) throws Exception {
+        Optional<InfoBasica> guardado = infoBasicaRepo.findById(codigo);
 
+        if(guardado.isEmpty()){
+            throw new Exception("La información basica no existe");
+        }
+
+        infoBasicaRepo.delete(guardado.get());
     }
 
     @Override
@@ -285,7 +326,13 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public void eliminarInstrumental(Integer codigo) throws Exception {
+        Optional<Instrumental> guardado = instrumentalRepo.findById(codigo);
 
+        if(guardado.isEmpty()){
+            throw new Exception("El instrumental no existe");
+        }
+
+        instrumentalRepo.delete(guardado.get());
     }
 
     @Override
@@ -322,7 +369,13 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public void eliminarOdontograma(Integer codigo) throws Exception {
+        Optional<Odontograma> guardado = odontogramaRepo.findById(codigo);
 
+        if(guardado.isEmpty()){
+            throw new Exception("El odontograma no existe");
+        }
+
+        odontogramaRepo.delete(guardado.get());
     }
 
     @Override
@@ -359,7 +412,13 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public void eliminarPaciente(Integer codigo) throws Exception {
+        Optional<Paciente> guardado = pacienteRepo.findById(codigo);
 
+        if(guardado.isEmpty()){
+            throw new Exception("El paciente no existe");
+        }
+
+        pacienteRepo.delete(guardado.get());
     }
 
     @Override
@@ -396,7 +455,13 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public void eliminarTratamiento(Integer codigo) throws Exception {
+        Optional<Tratamiento> guardado = tratamientoRepo.findById(codigo);
 
+        if(guardado.isEmpty()){
+            throw new Exception("El tratamiento no existe");
+        }
+
+        tratamientoRepo.delete(guardado.get());
     }
 
     @Override

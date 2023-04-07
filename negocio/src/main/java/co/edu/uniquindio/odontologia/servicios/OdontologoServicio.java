@@ -10,6 +10,7 @@ public interface OdontologoServicio {
 
     Agenda crearAgenda(Agenda agenda);
     Agenda actualizarAgenda(Agenda agenda) throws Exception;
+    void eliminarAgenda(Integer id) throws  Exception;
     Agenda obtenerAgenda(Integer idAgenda) throws Exception;
     List<Agenda> listarAgendas();
 
@@ -18,7 +19,7 @@ public interface OdontologoServicio {
     HistorialCita actualizarHistorialCita(HistorialCita historialCita) throws Exception;
     void eliminarHistorialCita(Integer id) throws Exception;
     List<HistorialCita> listarHistorialCitas();
-    HistorialCita obtenerHistorialCita(Integer id);
+    HistorialCita obtenerHistorialCita(Integer id) throws Exception;
 
     HistorialMedico crearHistorialMedico(HistorialMedico historialMedico);
     HistorialMedico actualizarHistorialMedico(HistorialMedico historialMedico) throws Exception;
