@@ -41,11 +41,15 @@ public class OdontologoServicioImpl implements OdontologoServicio {
     public Odontologo login(String correo, String password) throws Exception {
         Odontologo odontologo = odontologoRepo.findByCorreo(correo).orElse(null);
         if(odontologo != null) {
-            StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
+         //   StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
 
-            if (!spe.checkPassword(password, odontologo.getPassword())) {
-                throw new Exception("La contraseña es incorrecta");
-            }
+        //    if (!spe.checkPassword(password, odontologo.getPassword())) {
+        //        throw new Exception("La contraseña es incorrecta");
+        //    }
+                if (!password.equals(odontologo.getPassword())) {
+                    throw new Exception("La contraseña es incorrecta");
+                }
+
         }
         return odontologo;
     }

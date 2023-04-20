@@ -32,7 +32,7 @@ public class InfoBasica implements Serializable {
 
     @Lob
     private String estomatologico;
-
+    @ToString.Exclude
     @OneToOne(mappedBy = "infoBasica")
     private HistorialMedico historialMedico;
 

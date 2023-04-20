@@ -21,10 +21,10 @@ public class Tratamiento implements Serializable {
     private String nombre;
 
     private String descripcion;
-
+    @ToString.Exclude
     @OneToOne(mappedBy = "tratamiento")
     private HistorialCita historialCita;
-
+    @ToString.Exclude
     @OneToOne(mappedBy = "tratamiento")
     private HistorialTratamiento historialTratamiento;
     @Builder

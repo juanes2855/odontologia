@@ -40,7 +40,7 @@ public class Odontologo implements Serializable {
     @Column(nullable = false, length = 150)
     private String password;
 
-
+    @ToString.Exclude
     @OneToOne(mappedBy = "odontologo")
     private Agenda agenda;
 

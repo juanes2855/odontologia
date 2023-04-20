@@ -21,7 +21,7 @@ public class Agenda implements Serializable {
     @EqualsAndHashCode.Include
     private Integer id;
 
-    @Positive
+
     @Column(nullable = false)
     private LocalTime hora;
 
@@ -34,6 +34,7 @@ public class Agenda implements Serializable {
     @OneToOne
     private Odontologo odontologo;
 
+    @ToString.Exclude
     @OneToOne(mappedBy = "agenda")
     private HistorialCita historialCita;
 

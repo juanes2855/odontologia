@@ -30,14 +30,14 @@ public class Concentimiento implements Serializable {
 
     @Column(nullable = false)
     private String riesgos;
-
+    @ToString.Exclude
     @OneToOne(mappedBy = "concentimiento")
     private HistorialMedico historialMedico;
 
     @Builder
-    public Concentimiento(String nombre, LocalDate fecha, String procedimiento, String riesgos) {
+    public Concentimiento(String nombre, String procedimiento, String riesgos) {
         this.nombre = nombre;
-        this.fecha = fecha;
+        this.fecha = LocalDate.now();
         this.procedimiento = procedimiento;
         this.riesgos = riesgos;
     }

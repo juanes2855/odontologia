@@ -45,26 +45,21 @@ public class Paciente implements Serializable {
     @Length(max = 200)
     @Column(nullable = false, unique = true, length = 200)
     private String correo;
-
     @ToString.Exclude
-    @Length(max = 150)
-    @Column(nullable = false, length = 150)
-    private String password;
-
     @OneToOne(mappedBy = "paciente")
     private HistorialTratamiento historialTratamiento;
-
+    @ToString.Exclude
     @OneToMany(mappedBy = "paciente")
     private List<Odontograma> odontogramas;
-
+    @ToString.Exclude
     @OneToMany(mappedBy = "paciente")
     private List<HistorialCita> historialCitas;
-
+    @ToString.Exclude
     @OneToOne(mappedBy = "paciente")
     private HistorialMedico historialMedico;
 
     @Builder
-    public Paciente(Integer documento, String nombre, String telefono, String direccion, String genero, LocalDate fechaNacimiento, String correo, String password) {
+    public Paciente(Integer documento, String nombre, String telefono, String direccion, String genero, LocalDate fechaNacimiento, String correo) {
         this.documento = documento;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -73,6 +68,5 @@ public class Paciente implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
         this.fechaRegistro = LocalDate.now();
         this.correo = correo;
-        this.password = password;
     }
 }
