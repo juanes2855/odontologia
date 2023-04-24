@@ -75,5 +75,5 @@ public interface OdontologoServicio {
     void eliminarTratamiento(Integer codigo) throws Exception;
     List<Tratamiento> listarTratamientos();
     Tratamiento obtenerTratamiento(Integer codigo) throws Exception;
-
+    Odontologo obtenerOdontologo(int id) throws Exception;
 }

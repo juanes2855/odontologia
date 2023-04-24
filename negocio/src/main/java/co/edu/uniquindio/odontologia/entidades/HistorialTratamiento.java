@@ -23,7 +23,7 @@ public class HistorialTratamiento implements Serializable {
     @OneToOne
     private Paciente paciente;
 
-    @OneToOne
+    @ManyToOne
     private Tratamiento tratamiento;
 
     @Builder

@@ -54,6 +54,12 @@ public class Paciente implements Serializable {
     @ToString.Exclude
     @OneToMany(mappedBy = "paciente")
     private List<HistorialCita> historialCitas;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "paciente")
+    private List<Agenda> agendas;
+
+
     @ToString.Exclude
     @OneToOne(mappedBy = "paciente")
     private HistorialMedico historialMedico;

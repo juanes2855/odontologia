@@ -24,7 +24,7 @@ public class HistorialCita implements Serializable {
 
     @OneToOne
     private Agenda agenda;
-    @OneToOne
+    @ManyToOne
     private Tratamiento tratamiento;
     @ManyToOne
     private Paciente paciente;

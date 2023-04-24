@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -41,8 +43,8 @@ public class Odontologo implements Serializable {
     private String password;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "odontologo")
-    private Agenda agenda;
+    @OneToMany(mappedBy = "odontologo")
+    private List<Agenda> agendas;
 
     @Builder
     public Odontologo(String nombre, String telefono, String direccion, String correo, String password) {

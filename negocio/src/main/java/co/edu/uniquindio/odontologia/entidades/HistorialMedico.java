@@ -15,6 +15,7 @@ import java.time.LocalTime;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class HistorialMedico implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Integer id;
 

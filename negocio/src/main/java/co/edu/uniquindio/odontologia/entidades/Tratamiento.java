@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,11 +23,11 @@ public class Tratamiento implements Serializable {
 
     private String descripcion;
     @ToString.Exclude
-    @OneToOne(mappedBy = "tratamiento")
-    private HistorialCita historialCita;
+    @OneToMany(mappedBy = "tratamiento")
+    private List<HistorialCita> historialCita;
     @ToString.Exclude
-    @OneToOne(mappedBy = "tratamiento")
-    private HistorialTratamiento historialTratamiento;
+    @OneToMany(mappedBy = "tratamiento")
+    private List<HistorialTratamiento> historialTratamiento;
     @Builder
     public Tratamiento(String nombre, String descripcion) {
         this.nombre = nombre;

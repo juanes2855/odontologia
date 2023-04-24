@@ -31,7 +31,10 @@ public class Agenda implements Serializable {
     private String estado;
 
 
-    @OneToOne
+    @ManyToOne
+    private Paciente paciente;
+
+    @ManyToOne
     private Odontologo odontologo;
 
     @ToString.Exclude
@@ -39,10 +42,11 @@ public class Agenda implements Serializable {
     private HistorialCita historialCita;
 
     @Builder
-    public Agenda(LocalTime hora, LocalDate fecha, String estado, Odontologo odontologo) {
+    public Agenda(LocalTime hora, LocalDate fecha, String estado, Odontologo odontologo, Paciente paciente) {
         this.hora = hora;
         this.fecha = fecha;
         this.estado = estado;
         this.odontologo = odontologo;
+        this.paciente = paciente;
     }
 }
