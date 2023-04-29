@@ -30,6 +30,12 @@ jobs:
           name: java-app
           path: '${{ github.workspace }}/target/*.jar'
 
+      - name: Verify JAR file exists
+        run: |
+          cd ${{ github.workspace }}/target/
+          ls *.jar
+
+
   deploy:
     runs-on: windows-latest
     needs: build
