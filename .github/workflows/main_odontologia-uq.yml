@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: 'co/edu/uniquindio/odontologia/WebApplication/build/libs/app.jar'
 
       - name: Verify JAR file exists
         run: |
@@ -56,4 +56,4 @@ jobs:
           app-name: 'odontologia-uq'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4B7F665E9C4241CA9C7160D7CC1D2FCD }}
-          package: '*.jar'
+          package: 'co/edu/uniquindio/odontologia/WebApplication/build/libs/app.jar'
