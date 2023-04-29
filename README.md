@@ -1,4 +1,4 @@
-## Odontologia
+## Consultorio Odontologico
 
 Es un proyecto con busqueda de problemas de negocio para consultorio odontologico Janeth Giraldo
 
