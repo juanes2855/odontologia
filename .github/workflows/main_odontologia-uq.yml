@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${projectDir}/odontologia/web/src/main/web-application.jar'
+          path: 'odontologia/web/src/main/web-application.jar'
 
 
 
@@ -52,4 +52,4 @@ jobs:
           app-name: 'odontologia-uq'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4B7F665E9C4241CA9C7160D7CC1D2FCD }}
-          package: '${projectDir}/odontologia/web/src/main/web-application.jar'
+          package: 'odontologia/web/src/main/web-application.jar'

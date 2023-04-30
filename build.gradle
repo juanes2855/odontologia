@@ -7,7 +7,7 @@ bootJar {
     enabled = true
     archiveFileName = 'web-application.jar'
     mainClass  = 'co.edu.uniquindio.odontologia.WebApplication'
-    destinationDirectory = file('${projectDir}/odontologia/web/src/main/web-application.jar')
+    destinationDirectory = file('odontologia/web/src/main/web-application.jar')
 }
 bootRun {
     mainClass  = 'co.edu.uniquindio.odontologia.WebApplication'
