@@ -3,7 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
-bootJar {
+/*bootJar {
     enabled = true
     archiveFileName = 'web-application.war'
     mainClass  = 'co.edu.uniquindio.odontologia.WebApplication'
@@ -11,6 +11,12 @@ bootJar {
 }
 bootRun {
     mainClass  = 'co.edu.uniquindio.odontologia.WebApplication'
+}*/
+bootJar{
+    enabled = false
+}
+jar{
+    enabled = true
 }
 
 configurations {
