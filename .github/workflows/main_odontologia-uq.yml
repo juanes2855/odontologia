@@ -30,10 +30,6 @@ jobs:
           name: java-app
           path: 'build/libs/web-application.jar'
 
-      - name: Verify JAR file exists
-        run: |
-          cd ${{ github.workspace }}/target/
-          ls *.jar
 
 
   deploy:
