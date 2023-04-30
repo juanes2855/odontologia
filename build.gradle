@@ -5,9 +5,9 @@ plugins {
 }
 bootJar {
     enabled = true
-    archiveFileName = 'web-application.jar'
+    archiveFileName = 'web-application.war'
     mainClass  = 'co.edu.uniquindio.odontologia.WebApplication'
-    destinationDirectory = file('odontologia/web/src/main/web-application.jar')
+    destinationDirectory = file('odontologia/web/src/main/web-application.war')
 }
 bootRun {
     mainClass  = 'co.edu.uniquindio.odontologia.WebApplication'
