@@ -6,3 +6,4 @@
 /*/build/
 /build/
 #/web/src/main/resources/application.properties
+/DigiCertGlobalRootCA.crt.pem
