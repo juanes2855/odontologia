@@ -42,9 +42,7 @@ subprojects {
     }
 
     bootJar {
-        enabled = true
-        archiveFileName = 'web-1.0-SNAPSHOT.jar'
-        destinationDirectory = file('${rootDir}/web/src/main/web-1.0-SNAPSHOT.jar')
+        enabled = false
     }
     jar {
         enabled = true
