@@ -16,7 +16,7 @@ configurations {
     }
 }
 
-allprojects{
+allprojects {
     group 'co.edu.uniquindio.odontologia'
     version '1.0-SNAPSHOT'
     description 'Odontologia es un software para consultorios odontologicos'
@@ -27,7 +27,7 @@ allprojects{
     }
 }
 
-subprojects{
+subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'java'
@@ -39,6 +39,14 @@ subprojects{
         implementation 'org.springframework.boot:spring-boot-starter-validation'
         implementation 'mysql:mysql-connector-java:8.0.26'
 
+    }
+
+    bootJar {
+        enabled = false
+
+    }
+    jar {
+        enabled = true
     }
 
 }
