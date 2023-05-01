@@ -42,8 +42,8 @@ subprojects {
     }
 
     bootJar {
-        enabled = true
-        mainClass  = 'co.edu.uniquindio.odontologia.WebApplication'
+        enabled = false
+
     }
     jar {
         enabled = true
