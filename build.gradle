@@ -42,7 +42,9 @@ subprojects {
     }
 
     bootJar {
-        enabled = false
+        enabled = true
+        mainClass  = 'co.edu.uniquindio.odontologia.WebApplication'
+        destinationDirectory = file('odontologia/web/src/main/web-1.0-SNAPSHOT.jar')
     }
     jar {
         enabled = true
