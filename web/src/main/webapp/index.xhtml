@@ -38,23 +38,11 @@
                                 </a>
                             </li>
                             <li jsf:rendered="#{seguridadBean.autenticado}" >
-                                <a href="#" class="nav-link text-white text-center">
-                                    <i class="pi pi-wallet" /> <br/>
-                                    Historial de compras
-                                </a>
-                            </li>
-                            <li jsf:rendered="#{seguridadBean.autenticado}" >
-                                <a href="#" class="nav-link text-white text-center">
-                                    <i class="pi pi-user" /> <br/>
-                                    Perfil
-                                </a>
-                            </li>
-                            <li jsf:rendered="#{seguridadBean.autenticado}" >
                                 <div class="px-3 py-2">
                                     <div class="container d-flex flex-wrap justify-content-end">
                                         <div class="text-end">
                                             <h:form>
-                                                <p:outputLabel value="Hola, #{seguridadBean.persona.nombre}" styleClass="me-3" />
+                                                <p:outputLabel value="Hola, #{seguridadBean.odontologo.nombre}" styleClass="me-3" />
                                                 <p:commandButton value="Cerrar sesión" action="#{seguridadBean.cerrarSesion}" styleClass="ui-button-outlined ui-button-primary me-3" />
                                             </h:form>
                                         </div>
@@ -115,7 +103,7 @@
                 <p:message for="password_login" />
             </h:panelGrid>
 
-            <p:commandButton value="Iniciar Sesión" action="#{seguridadBean.iniciarSesionCliente}" styleClass="mt-4 mb-3" update="@form" icon="pi pi-sign-in" iconPos="left" />
+            <p:commandButton value="Iniciar Sesión" action="#{seguridadBean.iniciarSesionOdontologo}" styleClass="mt-4 mb-3" update="@form" icon="pi pi-sign-in" iconPos="left" />
             <br />
             <p:commandLink value="He olvidado mi contraseña" action="#{seguridadBean.recuperarPassword}" update="@form" />
             <p:growl for="login-bean" showDetail="true" />

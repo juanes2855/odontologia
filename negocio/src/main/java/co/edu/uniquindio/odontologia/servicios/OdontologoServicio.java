@@ -7,6 +7,7 @@ import java.util.List;
 public interface OdontologoServicio {
 
     Odontologo login(String correo, String password) throws Exception;
+    Odontologo crearOdontologo(Odontologo odontologo);
 
     Agenda crearAgenda(Agenda agenda);
     Agenda actualizarAgenda(Agenda agenda) throws Exception;

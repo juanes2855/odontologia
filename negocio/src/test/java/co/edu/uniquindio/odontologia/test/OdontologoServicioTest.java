@@ -47,6 +47,14 @@ public class OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
+    public void crearOdontologoTest() throws Exception {
+        Odontologo odontologo = Odontologo.builder().nombre("p").telefono("1").direccion("1").correo("1@gf.com").password("1234").build();
+        Odontologo createdoOdontologo = odontologoServicio.crearOdontologo(odontologo);
+        assertNotNull(createdoOdontologo);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
     public void actualizarAgendaTest() {
         try {
             Agenda agenda = odontologoServicio.obtenerAgenda(1);

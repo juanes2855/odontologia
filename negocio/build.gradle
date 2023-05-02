@@ -9,6 +9,6 @@ dependencies {
 
 }
 
-/*test {
+test {
     useJUnitPlatform()
-}*/
+}

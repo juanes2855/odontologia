@@ -38,6 +38,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public Odontologo login(String correo, String password) throws Exception {
+        System.out.println(odontologoRepo.findAll()+"---------------------------------------");
         Odontologo odontologo = odontologoRepo.findByCorreo(correo).orElse(null);
         if (odontologo != null) {
             //   StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
@@ -47,10 +48,19 @@ public class OdontologoServicioImpl implements OdontologoServicio {
             //    }
             if (!password.equals(odontologo.getPassword())) {
                 throw new Exception("La contraseña es incorrecta");
+            }else {
+                return odontologo;
             }
-
         }
-        return odontologo;
+        else {
+            throw new Exception("El Odontologo no existe");
+        }
+
+    }
+
+    @Override
+    public Odontologo crearOdontologo(Odontologo odontologo) {
+        return odontologoRepo.save(odontologo);
     }
 
     @Override
