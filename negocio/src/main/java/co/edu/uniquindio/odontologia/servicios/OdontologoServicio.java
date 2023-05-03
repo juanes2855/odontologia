@@ -8,6 +8,8 @@ public interface OdontologoServicio {
 
     Odontologo login(String correo, String password) throws Exception;
     Odontologo crearOdontologo(Odontologo odontologo);
+    List<Odontologo> listarOdontologos();
+
 
     Agenda crearAgenda(Agenda agenda);
     Agenda actualizarAgenda(Agenda agenda) throws Exception;

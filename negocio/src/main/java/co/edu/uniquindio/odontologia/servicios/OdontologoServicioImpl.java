@@ -38,7 +38,6 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public Odontologo login(String correo, String password) throws Exception {
-        System.out.println(odontologoRepo.findAll()+"---------------------------------------");
         Odontologo odontologo = odontologoRepo.findByCorreo(correo).orElse(null);
         if (odontologo != null) {
             //   StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
@@ -61,6 +60,11 @@ public class OdontologoServicioImpl implements OdontologoServicio {
     @Override
     public Odontologo crearOdontologo(Odontologo odontologo) {
         return odontologoRepo.save(odontologo);
+    }
+
+    @Override
+    public List<Odontologo> listarOdontologos() {
+        return odontologoRepo.findAll();
     }
 
     @Override

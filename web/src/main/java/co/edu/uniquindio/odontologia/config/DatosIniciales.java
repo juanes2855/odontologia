@@ -16,10 +16,6 @@ public class DatosIniciales implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        odontologoServicio.crearPaciente(Paciente.builder().documento(1004978129).nombre("Juan Rodrigo").telefono("321654")
-                .genero("H").fechaNacimiento(LocalDate.of(1990,10,12)).correo("juanrodri3@gmail.com").build());
-
-        odontologoServicio.crearOdontologo(Odontologo.builder().nombre("Juan Pablo").telefono("1").direccion("1").correo("juanpablo@gf.com").password("1234").build());
 
     }
 }
