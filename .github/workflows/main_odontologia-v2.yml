@@ -57,5 +57,5 @@ jobs:
         with:
           app-name: 'odontologia-v2'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_5e27241927644049909db84cb9ed1801 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_5e27241927644049909db84cb9ed1801}}
           package: '*.jar'
