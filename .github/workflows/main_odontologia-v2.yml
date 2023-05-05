@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: 'build/libs/src-1.0-SNAPSHOT.jar'
+          path: 'src/build/libs/src-1.0-SNAPSHOT.jar'
 
   deploy:
     runs-on: ubuntu-latest
