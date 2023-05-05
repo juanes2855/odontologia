@@ -1,10 +1,12 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy WAR app to Azure Web App - odontologia-v2
+name: Build and deploy JAR app to Azure Web App - odontologia-v2
 
 on:
   push:
+    env:
+      JAVA_VERSION: 11
     branches:
       - azure
   workflow_dispatch:
@@ -16,19 +18,25 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Java version
+      - name: Set up Java 11
         uses: actions/setup-java@v1
         with:
-          java-version: '11'
+          java-version: 11
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Build with Gradle
+        run: gradle build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.war'
+          path: '${{ github.workspace }}/build/libs/odontologia-1.0-SNAPSHOT-plain.jar'
+
+      - name: Verify JAR file exists
+        run: |
+          cd ${{ github.workspace }}/build/libs/
+          ls 
+
 
   deploy:
     runs-on: ubuntu-latest
@@ -50,4 +58,4 @@ jobs:
           app-name: 'odontologia-v2'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_81C5B13C2904465483EF92E285144342 }}
-          package: '*.war'
+          package: '*.jar'
