@@ -34,7 +34,7 @@ jobs:
 
       - name: Verify JAR file exists
         run: |
-          cd ${{ github.workspace }}/src/build/libs/src-1.0-SNAPSHOT.jar
+          cd ${{ github.workspace }}/src/build/libs/
           ls 
 
 
