@@ -9,7 +9,12 @@ configurations {
         extendsFrom annotationProcessor
     }
 }
-
+bootJar{
+    enabled = false
+}
+jar{
+    enabled = true
+}
 group 'co.edu.uniquindio.odontologia'
 version '1.0-SNAPSHOT'
 description 'Odontologia es un software para consultorios odontologicos'
