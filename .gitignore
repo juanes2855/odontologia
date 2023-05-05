@@ -1,7 +1,6 @@
 /.idea/
 *.class
 /.gradle/
-/src/
 /*/bin/
 /*/build/
 /build/
