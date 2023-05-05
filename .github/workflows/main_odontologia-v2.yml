@@ -8,7 +8,7 @@ on:
     env:
       JAVA_VERSION: 11
     branches:
-      - main
+      - azure
   workflow_dispatch:
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: 'web/build/libs/web-1.0-SNAPSHOT.jar'
+          path: 'src/build/libs/web-1.0-SNAPSHOT.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -51,5 +51,5 @@ jobs:
         with:
           app-name: 'odontologia-v2'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5C3697F049DD4BDDBC3ABA719AC3BD4C }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_5e27241927644049909db84cb9ed1801 }}
           package: '*.jar'

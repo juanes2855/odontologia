@@ -1,4 +1,3 @@
 rootProject.name = 'odontologia'
-include 'negocio'
-include 'web'
+include 'src'
 
