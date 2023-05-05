@@ -30,7 +30,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: '${{ github.workspace }}/src/build/libs/src-1.0-SNAPSHOT.jar'
+      - name: Verify JAR file exists
+        run: |
+          cd ${{ github.workspace }}/src/build/libs/src-1.0-SNAPSHOT.jar
+          ls *.jar
+
 
   deploy:
     runs-on: ubuntu-latest
