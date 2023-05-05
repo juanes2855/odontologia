@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/build/libs/odontologia-1.0-SNAPSHOT-plain.war'
+          path: '${{ github.workspace }}/build/libs/odontologia-1.0-SNAPSHOT-plain.jar'
 
       - name: Verify JAR file exists
         run: |
@@ -58,4 +58,4 @@ jobs:
           app-name: 'odontologia-v2'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_81C5B13C2904465483EF92E285144342 }}
-          package: '*.war'
+          package: '*.jar'
