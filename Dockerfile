@@ -6,7 +6,7 @@ COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle clean
 RUN gradle bootJar
-RUN gradle sonarqube
+#RUN gradle test
 
 FROM eclipse-temurin:11
 ARG JAR_FILE=build/libs/*.jar
