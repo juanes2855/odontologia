@@ -4,6 +4,18 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
+plugins {
+    id "org.sonarqube" version "3.5.0.2730"
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "juanes2855_odontologia"
+        property "sonar.organization", "juanes2855"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.branch", "railway"
+    }
+}
 configurations {
     compileOnly {
         extendsFrom annotationProcessor

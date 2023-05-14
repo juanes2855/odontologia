@@ -19,7 +19,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-public class OdontologoServicioTest {
+public class
+OdontologoServicioTest {
 
     @Autowired
     private OdontologoServicio odontologoServicio;
