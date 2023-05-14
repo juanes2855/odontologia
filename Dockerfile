@@ -5,9 +5,8 @@ FROM gradle:8.1.1-jdk11 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle clean
-RUN gradle test
 RUN gradle bootJar
-
+RUN gradle test
 
 FROM eclipse-temurin:11
 ARG JAR_FILE=build/libs/*.jar
