@@ -43,6 +43,10 @@ configurations {
         implementation 'org.springframework.boot:spring-boot-starter-web'
         runtimeOnly     'mysql:mysql-connector-java'
     }
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ["-Xbuild-cache"]
+}
 /*test {
     useJUnitPlatform()
 }*/
