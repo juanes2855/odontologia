@@ -9,8 +9,7 @@ plugins {
 
 jacoco {
     toolVersion = '0.8.7'
-    //enabled = true
-    //destinationFile = file("$buildDir/jacoco/test.exec")
+    reportsDir  = file("$buildDir/jacoco/test.exec")
 }
 
 test {
