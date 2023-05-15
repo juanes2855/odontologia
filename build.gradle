@@ -23,7 +23,9 @@ jacocoTestReport {
             outputLocation = file("$buildDir/reports/jacoco/test/jacocoTestReport.xml")
             enabled true
         }
-        html.enabled false
+        html {
+            enabled = false
+        }
     }
     dependsOn test
     doLast {
