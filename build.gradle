@@ -8,7 +8,7 @@ plugins {
 }
 jacoco {
     toolVersion = '0.8.7'
-    enabled = true
+    isEnabled = true
     destinationFile = file("$buildDir/jacoco/test.exec")
 }
 
