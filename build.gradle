@@ -19,8 +19,8 @@ test {
 }
 jacocoTestReport {
     reports {
-        xml.enabled true
-        html.enabled false
+       // xml.enabled true
+       // html.enabled false
     }
 }
 
@@ -59,7 +59,6 @@ configurations {
         implementation 'org.joinfaces:jsf-spring-boot-starter'
         implementation 'org.springframework.boot:spring-boot-starter-web'
         runtimeOnly     'mysql:mysql-connector-java'
-        testImplementation 'org.jacoco:org.jacoco.core:0.8.2'
     }
 
 
