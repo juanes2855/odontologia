@@ -20,7 +20,7 @@ import java.util.List;
 @Component
 @ViewScoped
 public class AgendaBean implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1905122041950251207L;
     @Autowired
     private OdontologoServicio odontologoServicio;
 
