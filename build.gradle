@@ -23,7 +23,7 @@ jacocoTestReport {
             enabled  true
         }
         html {
-            enabled = false
+            enabled  true
         }
     }
     dependsOn test
