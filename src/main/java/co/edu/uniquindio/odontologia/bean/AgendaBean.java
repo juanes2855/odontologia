@@ -19,11 +19,10 @@ import java.util.List;
 
 @Component
 @ViewScoped
-@SuppressWarnings("serial")
 public class AgendaBean implements Serializable {
 
     @Autowired
-    private  OdontologoServicio odontologoServicio;
+    private transient OdontologoServicio odontologoServicio;
 
     @Getter
     @Setter
