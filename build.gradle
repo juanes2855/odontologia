@@ -19,10 +19,7 @@ test {
 
 jacocoTestReport {
     reports {
-        xml {
-            outputLocation = file("$buildDir/reports/jacoco/test/jacocoTestReport.xml")
-            enabled true
-        }
+
         html {
             enabled = false
         }
