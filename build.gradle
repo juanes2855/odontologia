@@ -11,16 +11,19 @@ plugins {
 jacoco {
     toolVersion = '0.8.7'
 }
-test {
-    jacoco {
+jacoco {
         enabled = true
         destinationFile = file("$buildDir/jacoco/test.exec")
-    }
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
 }
 jacocoTestReport {
     reports {
         xml.enabled true
-       // html.enabled false
+        html.enabled false
     }
 }
 
@@ -67,7 +70,3 @@ dependencies {
 
 
 
-test {
-    useJUnitPlatform()
-    finalizedBy jacocoTestReport
-}
