@@ -9,6 +9,7 @@ plugins {
 
 jacoco {
     toolVersion = '0.8.7'
+    reportsDir  = file("$buildDir/jacoco/test.exec")
 }
 
 test {
@@ -21,8 +22,6 @@ jacocoTestReport {
         xml.enabled true
         html.enabled false
     }
-    // Especificar la ubicación del archivo de resultados de cobertura
-    destinationFile = file("$buildDir/jacoco/test.exec")
 }
 
 sonarqube {
