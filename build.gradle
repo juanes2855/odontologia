@@ -9,7 +9,7 @@ plugins {
 
 jacoco {
     toolVersion = '0.8.7'
-    reportsDir  = file("$buildDir/jacoco/test.exec")
+
 }
 
 test {
@@ -22,8 +22,40 @@ jacocoTestReport {
         xml.enabled true
         html.enabled false
     }
+    dependsOn test
+    doLast {
+        def file = project.file("${project.buildDir}/reports/jacoco/test/jacocoTestReport.xml")
+        println "Generating Jacoco HTML report from file ${file.absolutePath}"
+        ant {
+            taskdef(name: 'jacocoReport',
+                    classname: 'org.jacoco.ant.ReportTask',
+                    classpath: configurations.jacocoAntTask.asPath)
+            jacocoReport {
+                executiondata {
+                    file(file.absolutePath)
+                }
+                structure(name: 'Example') {
+                    classfiles {
+                        fileset(dir: "${project.buildDir}/classes/java/test") {
+                            include(name: '**/*.class')
+                        }
+                    }
+                    sourcefiles {
+                        fileset(dir: 'src/main/java') {
+                            include(name: '**/*.java')
+                        }
+                    }
+                }
+                xml {
+                    destinationFile = file("$buildDir/reports/jacoco/report.xml")
+                }
+                html {
+                    outputDirectory = file("$buildDir/reports/jacoco/html")
+                }
+            }
+        }
+    }
 }
-
 sonarqube {
     properties {
         property "sonar.projectKey", "juanes2855_odontologia"
