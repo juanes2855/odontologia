@@ -20,7 +20,7 @@ test {
 jacocoTestReport {
     reports {
         xml {
-            enabled = true
+            enabled  true
         }
         html {
             enabled = false
