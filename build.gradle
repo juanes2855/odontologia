@@ -13,7 +13,6 @@ sonarqube {
         property "sonar.projectKey", "juanes2855_odontologia"
         property "sonar.organization", "juanes2855"
         property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.branch", "railway"
     }
 }
 configurations {
@@ -44,9 +43,9 @@ configurations {
         runtimeOnly     'mysql:mysql-connector-java'
     }
 
-tasks.withType(JavaCompile) {
-    options.compilerArgs += ["-Xbuild-cache"]
-}
+
+
+
 /*test {
     useJUnitPlatform()
 }*/
