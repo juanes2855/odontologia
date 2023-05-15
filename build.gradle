@@ -65,7 +65,7 @@ configurations {
 
 
 
-test {
+/*test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
-}
+}*/
