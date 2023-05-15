@@ -20,7 +20,7 @@ import java.util.List;
 public class SeguridadBean implements Serializable {
 
     @Autowired
-    private OdontologoServicio odontologoServicio;
+    private transient OdontologoServicio odontologoServicio;
 
     @Getter @Setter
     private boolean autenticado;
