@@ -60,7 +60,10 @@ configurations {
         implementation 'org.springframework.boot:spring-boot-starter-web'
         runtimeOnly     'mysql:mysql-connector-java'
     }
-
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+}
 
 
 
