@@ -19,8 +19,8 @@ test {
 
 jacocoTestReport {
     reports {
-
-        html.enabled = false
+        xml.enabled true
+        html.enabled false
     }
     dependsOn test
     doLast {
@@ -31,9 +31,7 @@ jacocoTestReport {
                     classname: 'org.jacoco.ant.ReportTask',
                     classpath: configurations.jacocoAntTask.asPath)
             jacocoReport {
-                executiondata {
-                    file(file.absolutePath)
-                }
+                datafile(file: file.absolutePath)
                 structure(name: 'Example') {
                     classfiles {
                         fileset(dir: "${project.buildDir}/classes/java/test") {
@@ -61,7 +59,10 @@ sonarqube {
         property "sonar.projectKey", "juanes2855_odontologia"
         property "sonar.organization", "juanes2855"
         property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
+        property "sonar.jacoco.reportPaths", "${buildDir}/jacoco/test.exec"
+
     }
 }
 
