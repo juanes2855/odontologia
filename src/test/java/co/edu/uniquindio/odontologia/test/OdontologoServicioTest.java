@@ -59,7 +59,7 @@ OdontologoServicioTest {
     @Sql("classpath:dataset.sql")
     public void actualizarAgendaTest() {
         try {
-            Agenda agenda = odontologoServicio.obtenerAgenda(1);
+            Agenda agenda = odontologoServicio.obtenerAgenda(1111);
             agenda.setEstado("Sin confirmar");
             Agenda updatedAgenda = odontologoServicio.actualizarAgenda(agenda);
             assertNotNull(updatedAgenda);
@@ -72,7 +72,7 @@ OdontologoServicioTest {
     @Sql("classpath:dataset.sql")
     public void eliminarAgendaTest() {
         try {
-            odontologoServicio.eliminarAgenda(1);
+            odontologoServicio.eliminarAgenda(1111);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -89,7 +89,7 @@ OdontologoServicioTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void crearHistorialCitaTest() throws Exception {
-        Agenda agenda = odontologoServicio.obtenerAgenda(1);
+        Agenda agenda = odontologoServicio.obtenerAgenda(1111);
         Paciente paciente = odontologoServicio.obtenerPaciente(11111111);
         Tratamiento tratamiento = Tratamiento.builder().nombre("Ortoplan").descripcion("Planta de ortodoncia paciente").build();
         HistorialCita historialCita = HistorialCita.builder().asistencia("Por confirmar").descripcion("Tratamiento ortodoncia")
