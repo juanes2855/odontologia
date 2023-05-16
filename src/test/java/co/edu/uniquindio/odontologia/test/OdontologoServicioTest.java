@@ -88,7 +88,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void crearHistorialCitaTest() throws Exception {
+    void crearHistorialCitaTest() throws Exception {
         Agenda agenda = odontologoServicio.obtenerAgenda(1111);
         Paciente paciente = odontologoServicio.obtenerPaciente(11111111);
         Tratamiento tratamiento = Tratamiento.builder().nombre("Ortoplan").descripcion("Planta de ortodoncia paciente").build();
@@ -100,7 +100,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void actualizarHistorialCitaTest() {
+    void actualizarHistorialCitaTest() {
         try {
             HistorialCita historialCita = odontologoServicio.obtenerHistorialCita(1);
             historialCita.setAsistencia("No asistio");
@@ -112,7 +112,7 @@ OdontologoServicioTest {
     }
     @Test
     @Sql("classpath:dataset.sql")
-    public void eliminarHistorialCitaTest() {
+    void eliminarHistorialCitaTest() {
         try {
             odontologoServicio.eliminarHistorialCita(1);
         } catch (Exception e) {
@@ -122,7 +122,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void listarHistorialCitasTest() {
+    void listarHistorialCitasTest() {
         List<HistorialCita> historialCitas = odontologoServicio.listarHistorialCitas();
         assertNotNull(historialCitas);
         assertFalse(historialCitas.isEmpty());
@@ -130,7 +130,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void obtenerHistorialCitaTest() {
+    void obtenerHistorialCitaTest() {
         try {
             HistorialCita historialCita = odontologoServicio.obtenerHistorialCita(1);
             assertNotNull(historialCita);
@@ -141,7 +141,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void crearHistorialMedicoTest() {
+    void crearHistorialMedicoTest() {
         HistorialMedico historialMedico = HistorialMedico.builder()
                 // Set properties for the historialMedico object
                 .build();
@@ -151,7 +151,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void actualizarHistorialMedicoTest() {
+    void actualizarHistorialMedicoTest() {
         try {
             HistorialMedico historialMedico = odontologoServicio.obtenerHistorialMedico(1);
             // Update properties for the historialMedico object
@@ -164,7 +164,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void eliminarHistorialMedicoTest() {
+    void eliminarHistorialMedicoTest() {
         try {
             odontologoServicio.eliminarHistorialMedico(1);
         } catch (Exception e) {
@@ -182,7 +182,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void crearConcentimientoTest() throws Exception {
+    void crearConcentimientoTest() throws Exception {
         Paciente paciente = odontologoServicio.obtenerPaciente(12345678);
         Concentimiento concentimiento = Concentimiento.builder().nombre(paciente.getNombre()).procedimiento("Ortodoncia").riesgos("dientes").build();
         Concentimiento createdConcentimiento = odontologoServicio.crearConcentimiento(concentimiento);
@@ -191,7 +191,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void actualizarConcentimientoTest() {
+    void actualizarConcentimientoTest() {
         try {
             Concentimiento concentimiento = odontologoServicio.obtenerConcentimiento(1);
             // Update properties for the concentimiento object
@@ -204,7 +204,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void eliminarConcentimientoTest() {
+    void eliminarConcentimientoTest() {
         try {
             odontologoServicio.eliminarConcentimiento(1);
         } catch (Exception e) {
@@ -214,7 +214,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void listarConcentimientosTest() {
+    void listarConcentimientosTest() {
         List<Concentimiento> concentimientos = odontologoServicio.listarConcentimientos();
         assertNotNull(concentimientos);
         assertFalse(concentimientos.isEmpty());
@@ -222,7 +222,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void obtenerConcentimientoTest() {
+    void obtenerConcentimientoTest() {
         try {
             Concentimiento concentimiento = odontologoServicio.obtenerConcentimiento(1);
             assertNotNull(concentimiento);
@@ -233,7 +233,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void crearHistorialTratamientoTest() throws Exception {
+    void crearHistorialTratamientoTest() throws Exception {
         Paciente paciente = odontologoServicio.obtenerPaciente(11111111);
         Tratamiento tratamiento = odontologoServicio.obtenerTratamiento(1);
         HistorialTratamiento historialTratamiento = HistorialTratamiento.builder()
@@ -245,7 +245,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void actualizarHistorialTratamientoTest() {
+    void actualizarHistorialTratamientoTest() {
         try {
             HistorialTratamiento historialTratamiento = odontologoServicio.obtenerHistorialTratamiento(1);
             historialTratamiento.setEstado("En proceso");
@@ -258,7 +258,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void eliminarHistorialTratamientoTest() {
+    void eliminarHistorialTratamientoTest() {
         try {
             odontologoServicio.eliminarHistorialTratamiento(1);
         } catch (Exception e) {
@@ -268,7 +268,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void listarHistorialTratamientosTest() {
+    void listarHistorialTratamientosTest() {
         List<HistorialTratamiento> historialTratamientos = odontologoServicio.listarHistorialTratamientos();
         assertNotNull(historialTratamientos);
         assertFalse(historialTratamientos.isEmpty());
@@ -276,7 +276,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void obtenerHistorialTratamientoTest() {
+    void obtenerHistorialTratamientoTest() {
         try {
             HistorialTratamiento historialTratamiento = odontologoServicio.obtenerHistorialTratamiento(1);
             assertNotNull(historialTratamiento);
@@ -286,7 +286,7 @@ OdontologoServicioTest {
     }
     @Test
     @Sql("classpath:dataset.sql")
-    public void crearInfoBasicaTest() {
+    void crearInfoBasicaTest() {
         InfoBasica infoBasica = InfoBasica.builder()
                 // Set properties for the infoBasica object
                 .build();
@@ -296,7 +296,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void actualizarInfoBasicaTest() {
+    void actualizarInfoBasicaTest() {
         try {
             InfoBasica infoBasica = odontologoServicio.obtenerInfoBasica(1);
             // Update properties for the infoBasica object
@@ -309,7 +309,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void eliminarInfoBasicaTest() {
+    void eliminarInfoBasicaTest() {
         try {
             odontologoServicio.eliminarInfoBasica(1);
         } catch (Exception e) {
@@ -319,7 +319,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void listarInfoBasicasTest() {
+    void listarInfoBasicasTest() {
         List<InfoBasica> infoBasicas = odontologoServicio.listarInfoBasicas();
         assertNotNull(infoBasicas);
         assertFalse(infoBasicas.isEmpty());
@@ -327,7 +327,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void crearInstrumentalTest() {
+    void crearInstrumentalTest() {
         Instrumental instrumental = Instrumental.builder()
                 // Set properties for the instrumental object
                 .build();
@@ -337,7 +337,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void actualizarInstrumentalTest() {
+    void actualizarInstrumentalTest() {
         try {
             Instrumental instrumental = odontologoServicio.obtenerInstrumental(1);
             // Update properties for the instrumental object
@@ -350,7 +350,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void eliminarInstrumentalTest() {
+    void eliminarInstrumentalTest() {
         try {
             odontologoServicio.eliminarInstrumental(1);
         } catch (Exception e) {
@@ -360,7 +360,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void listarInstrumentalesTest() {
+    void listarInstrumentalesTest() {
         List<Instrumental> instrumentales = odontologoServicio.listarInstrumentales();
         assertNotNull(instrumentales);
         assertFalse(instrumentales.isEmpty());
@@ -368,7 +368,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void obtenerInstrumentalTest() {
+    void obtenerInstrumentalTest() {
         try {
             Instrumental instrumental = odontologoServicio.obtenerInstrumental(1);
             assertNotNull(instrumental);
@@ -379,7 +379,7 @@ OdontologoServicioTest {
     // Pruebas para Odontograma
     @Test
     @Sql("classpath:dataset.sql")
-    public void crearOdontogramaTest() {
+    void crearOdontogramaTest() {
         Odontograma odontograma = Odontograma.builder()
                 // Set properties for the odontograma object
                 .build();
@@ -389,7 +389,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void actualizarOdontogramaTest() {
+    void actualizarOdontogramaTest() {
         try {
             Odontograma odontograma = odontologoServicio.obtenerOdontograma(1);
             // Update properties for the odontograma object
@@ -402,7 +402,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void eliminarOdontogramaTest() {
+    void eliminarOdontogramaTest() {
         try {
             odontologoServicio.eliminarOdontograma(1);
         } catch (Exception e) {
@@ -412,7 +412,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void listarOdontogramasTest() {
+    void listarOdontogramasTest() {
         List<Odontograma> odontogramas = odontologoServicio.listarOdontogramas();
         assertNotNull(odontogramas);
         assertFalse(odontogramas.isEmpty());
@@ -420,7 +420,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void obtenerOdontogramaTest() {
+    void obtenerOdontogramaTest() {
         try {
             Odontograma odontograma = odontologoServicio.obtenerOdontograma(1);
             assertNotNull(odontograma);
@@ -432,7 +432,7 @@ OdontologoServicioTest {
     // Pruebas para Paciente
     @Test
     @Sql("classpath:dataset.sql")
-    public void crearPacienteTest() {
+    void crearPacienteTest() {
         Paciente paciente = Paciente.builder().documento(1004978123).nombre("Juan Rodrigo").telefono("321654")
                 .genero("H").fechaNacimiento(LocalDate.of(1990,10,12)).correo("juanrodri@gmail.com").build();
         Paciente createdPaciente = odontologoServicio.crearPaciente(paciente);
@@ -441,7 +441,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void actualizarPacienteTest() {
+    void actualizarPacienteTest() {
         try {
             Paciente paciente = odontologoServicio.obtenerPaciente(12345678);
             paciente.setTelefono("556-1234");
@@ -454,7 +454,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void eliminarPacienteTest() {
+    void eliminarPacienteTest() {
         try {
             odontologoServicio.eliminarPaciente(12345678);
         } catch (Exception e) {
@@ -464,7 +464,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void listarPacientesTest() {
+    void listarPacientesTest() {
         List<Paciente> pacientes = odontologoServicio.listarPacientes();
         assertNotNull(pacientes);
         assertFalse(pacientes.isEmpty());
@@ -472,7 +472,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void obtenerPacienteTest() {
+    void obtenerPacienteTest() {
         try {
             Paciente paciente = odontologoServicio.obtenerPaciente(12345678);
             assertNotNull(paciente);
@@ -482,7 +482,7 @@ OdontologoServicioTest {
     }
     @Test
     @Sql("classpath:dataset.sql")
-    public void crearTratamientoTest() {
+    void crearTratamientoTest() {
         Tratamiento tratamiento = Tratamiento.builder()
                 // Set properties for the tratamiento object
                 .build();
@@ -492,7 +492,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void actualizarTratamientoTest() {
+    void actualizarTratamientoTest() {
         try {
             Tratamiento tratamiento = odontologoServicio.obtenerTratamiento(1);
             // Update properties for the tratamiento object
@@ -505,7 +505,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void eliminarTratamientoTest() {
+    void eliminarTratamientoTest() {
         try {
             odontologoServicio.eliminarTratamiento(1);
         } catch (Exception e) {
@@ -515,7 +515,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void listarTratamientosTest() {
+    void listarTratamientosTest() {
         List<Tratamiento> tratamientos = odontologoServicio.listarTratamientos();
         assertNotNull(tratamientos);
         assertFalse(tratamientos.isEmpty());
