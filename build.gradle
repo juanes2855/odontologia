@@ -12,10 +12,7 @@ jacoco {
 
 }
 
-test {
-    useJUnitPlatform()
-    finalizedBy jacocoTestReport
-}
+
 
 jacocoTestReport {
     reports {
@@ -99,4 +96,8 @@ dependencies {
 dependencies {
     testImplementation 'junit:junit:4.13.2'
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+}
+test {
+    //useJUnitPlatform()
+    finalizedBy jacocoTestReport
 }
