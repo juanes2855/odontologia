@@ -1,5 +1,5 @@
 -- Tabla Odontologo
-INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (1111,  'Juan Perez', 'Calle 123', '555-1234', 'juan.perez@example.com', 'secreto123');
+INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (1111,  'Juan Perez', 'Calle 123', '555-1234', 'juan.perez1111@example.com', 'secreto123');
 INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (2222,  'Maria Gonzalez', 'Avenida 456', '555-5678', 'maria.gonzalez@example.com', 'clave123');
 INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (3333,  'Pedro Ramirez', 'Carrera 789', '555-4321', 'pedro.ramirez@example.com', 'password123');
 INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (4444,  'Luisa Lopez', 'Calle 321', '555-8765', 'luisa.lopez@example.com', 'secreto456');
