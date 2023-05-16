@@ -70,7 +70,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void eliminarAgendaTest() {
+    void eliminarAgendaTest() {
         try {
             odontologoServicio.eliminarAgenda(1111);
         } catch (Exception e) {
@@ -80,7 +80,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void listarAgendasTest() {
+    void listarAgendasTest() {
         List<Agenda> agendas = odontologoServicio.listarAgendas();
         assertNotNull(agendas);
         assertFalse(agendas.isEmpty());

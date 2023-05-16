@@ -1,6 +1,5 @@
 package co.edu.uniquindio.odontologia.repo;
 
-import co.edu.uniquindio.odontologia.entidades.HistorialCita;
 import co.edu.uniquindio.odontologia.entidades.Tratamiento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
