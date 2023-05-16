@@ -29,6 +29,7 @@ OdontologoServicioTest {
     @Sql("classpath:dataset.sql")
     public void loginTest() {
         try {
+
             Odontologo odontologo = odontologoServicio.login("luisa.lopez@example.com", "secreto456");
             assertNotNull(odontologo);
         } catch (Exception e) {
