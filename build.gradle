@@ -13,49 +13,6 @@ jacoco {
 }
 
 
-
-jacocoTestReport {
-    reports {
-        xml {
-            enabled  true
-        }
-        html {
-            enabled  false
-        }
-    }
-    dependsOn test
-    doLast {
-        def file = project.file("${project.buildDir}/reports/jacoco/test/jacocoTestReport.xml")
-        println "Generating Jacoco HTML report from file ${file.absolutePath}"
-        ant {
-            taskdef(name: 'jacocoReport',
-                    classname: 'org.jacoco.ant.ReportTask',
-                    classpath: configurations.jacocoAntTask.asPath)
-            jacocoReport {
-                datafile(file: file.absolutePath)
-                structure(name: 'Example') {
-                    classfiles {
-                        fileset(dir: "${project.buildDir}/classes/java/test") {
-                            include(name: '**/*.class')
-                        }
-                    }
-                    sourcefiles {
-                        fileset(dir: 'src/main/java') {
-                            include(name: '**/*.java')
-                        }
-                    }
-                }
-                xml {
-                    destinationFile = file("$buildDir/reports/jacoco/report.xml")
-                }
-                html {
-                    outputDirectory = file("$buildDir/reports/jacoco/html")
-                }
-            }
-        }
-    }
-}
-jacocoTestReport.onlyIf = { true }
 sonarqube {
     properties {
         property "sonar.projectKey", "juanes2855_odontologia"
@@ -97,7 +54,30 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
 }
+
+
 test {
     //useJUnitPlatform()
     finalizedBy jacocoTestReport
+}
+
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.enabled true
+        html.enabled true
+        csv.enabled true
+    }
+    finalizedBy jacocoTestCoverageVerification
+}
+jacocoTestCoverageVerification {   //Verifies the code coverage rule if enabled.
+    violationRules {
+        rule {
+            enabled = true
+            limit {
+                minimum = 0.25
+            }
+        }
+    }
 }
