@@ -16,12 +16,12 @@ jacoco {
 
 jacocoTestReport {
     reports {
-        /*xml {
+        xml {
             enabled  true
         }
         html {
-            enabled  true
-        }*/
+            enabled  false
+        }
     }
     dependsOn test
     doLast {
