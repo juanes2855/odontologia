@@ -57,7 +57,7 @@ public class AgendaBean implements Serializable {
 
     public void crearAgenda(){
         try {
-            if (!editar) {
+            if (Boolean.FALSE.equals(editar)) {
                 Odontologo odontologo = odontologoServicio.obtenerOdontologo(1);
                 agenda.setOdontologo(odontologo);
                 Agenda registro = odontologoServicio.crearAgenda(agenda);
