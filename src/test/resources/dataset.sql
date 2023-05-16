@@ -1,9 +1,9 @@
 -- Tabla Odontologo
-INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (1,  'Juan Perez', 'Calle 123', '555-1234', 'juan.perez@example.com', 'secreto123');
-INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (2,  'Maria Gonzalez', 'Avenida 456', '555-5678', 'maria.gonzalez@example.com', 'clave123');
-INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (3,  'Pedro Ramirez', 'Carrera 789', '555-4321', 'pedro.ramirez@example.com', 'password123');
-INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (4,  'Luisa Lopez', 'Calle 321', '555-8765', 'luisa.lopez@example.com', 'secreto456');
-INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (5,  'Alejandro Rodriguez', 'Avenida 987', '555-2345', 'alejandro.rodriguez@example.com', 'clave456');
+INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (1111,  'Juan Perez', 'Calle 123', '555-1234', 'juan.perez@example.com', 'secreto123');
+INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (2222,  'Maria Gonzalez', 'Avenida 456', '555-5678', 'maria.gonzalez@example.com', 'clave123');
+INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (3333,  'Pedro Ramirez', 'Carrera 789', '555-4321', 'pedro.ramirez@example.com', 'password123');
+INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (4444,  'Luisa Lopez', 'Calle 321', '555-8765', 'luisa.lopez@example.com', 'secreto456');
+INSERT INTO odontologo (id, nombre, direccion, telefono, correo, password) VALUES (5555,  'Alejandro Rodriguez', 'Avenida 987', '555-2345', 'alejandro.rodriguez@example.com', 'clave456');
 
 -- Tabla Instrumental
 INSERT INTO instrumental (id, nombre, marca, registro, cantidad) VALUES (1, 'Torno dental', 'BienAir', '20190415', 3);
