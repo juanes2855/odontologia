@@ -28,11 +28,11 @@ INSERT INTO paciente (documento, nombre, direccion, telefono, correo, genero, fe
 INSERT INTO paciente (documento, nombre, direccion, telefono, correo, genero, fecha_nacimiento, fecha_registro) VALUES (33333333, 'Ana Rodriguez', 'Avenida 789', '555-8765', 'anarodriguez@example.com', 'M', '2000-03-10', '2022-04-18');
 
 -- Tabla Agenda
-INSERT INTO Agenda (id, estado, fecha, hora, odontologo_id, paciente_documento) VALUES (1, 'confirmado', '2023-04-20', '10:00:00', 1, 12345678);
-INSERT INTO Agenda (id, estado, fecha, hora, odontologo_id, paciente_documento) VALUES (2, 'por confirmar', '2023-04-21', '14:30:00', 2, 87654321);
-INSERT INTO Agenda (id, estado, fecha, hora, odontologo_id, paciente_documento) VALUES (3, 'por confirmar', '2023-04-22', '16:45:00', 3, 11111111);
-INSERT INTO Agenda (id, estado, fecha, hora, odontologo_id, paciente_documento) VALUES (4, 'confirmado', '2023-04-23', '09:15:00', 3, 22222222);
-INSERT INTO Agenda (id, estado, fecha, hora, odontologo_id, paciente_documento) VALUES (5, 'confirmado', '2023-04-24', '11:30:00', 5, 33333333);
+INSERT INTO agenda (id, estado, fecha, hora, odontologo_id, paciente_documento) VALUES (1, 'confirmado', '2023-04-20', '10:00:00', 1, 12345678);
+INSERT INTO agenda (id, estado, fecha, hora, odontologo_id, paciente_documento) VALUES (2, 'por confirmar', '2023-04-21', '14:30:00', 2, 87654321);
+INSERT INTO agenda (id, estado, fecha, hora, odontologo_id, paciente_documento) VALUES (3, 'por confirmar', '2023-04-22', '16:45:00', 3, 11111111);
+INSERT INTO agenda (id, estado, fecha, hora, odontologo_id, paciente_documento) VALUES (4, 'confirmado', '2023-04-23', '09:15:00', 3, 22222222);
+INSERT INTO agenda (id, estado, fecha, hora, odontologo_id, paciente_documento) VALUES (5, 'confirmado', '2023-04-24', '11:30:00', 5, 33333333);
 
 -- Tabla InfoBasica
 INSERT INTO info_basica (id, nombre_acompanante, telefono_acompante, motivo, antecedentes_medicos_personales, estomatologico) VALUES (1, 'Luisa Pérez', '555-1234', 'Acompañamiento a su hijo', 'Hipertensión arterial', 'Caries dental');
