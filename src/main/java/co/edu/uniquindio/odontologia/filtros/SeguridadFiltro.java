@@ -23,7 +23,7 @@ public class SeguridadFiltro implements Filter {
             SeguridadBean userManager = (SeguridadBean) request.getSession().getAttribute("seguridadBean");
 
             //Aplicar el filtro a esta carpeta
-            if (requestURI.startsWith("/odontologo/") ) {
+            if (requestURI.startsWith("src/main/resources/odontologo/") ) {
 
 
                 if (userManager != null) {
