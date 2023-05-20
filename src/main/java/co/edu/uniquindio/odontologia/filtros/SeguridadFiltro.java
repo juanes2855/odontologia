@@ -1,12 +1,13 @@
 package co.edu.uniquindio.odontologia.filtros;
 
 import co.edu.uniquindio.odontologia.bean.SeguridadBean;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+@Component
 public class SeguridadFiltro implements Filter {
 
     public static final String PAGINA_INICIO = "/index.xhtml";
