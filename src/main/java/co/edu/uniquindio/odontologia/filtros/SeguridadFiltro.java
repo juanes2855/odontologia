@@ -30,7 +30,7 @@ public class SeguridadFiltro implements Filter {
                 return;
             }*/
             //Aplicar el filtro a esta carpeta
-            if (requestURI.startsWith(request.getContextPath()+"/odontologo/") ) {
+            if (requestURI.startsWith("/odontologo/") ) {
                 if (userManager != null) {
                     if (userManager.isAutenticado() && userManager.getTipoSesion().equals("odontologo")) {
                         //El usuario está logueado entonces si puede ver la página solicitada
@@ -43,6 +43,9 @@ public class SeguridadFiltro implements Filter {
                     //El usuario no está logueado, entonces se redirecciona al inicio
                     response.sendRedirect(request.getContextPath() + PAGINA_INICIO);
                 }
+            } else  {
+                //La página solicitada no está en la carpeta /usuario entonces el filtro no aplica
+                filterChain.doFilter(servletRequest, servletResponse);
             }
 
         }catch (Exception e) {
