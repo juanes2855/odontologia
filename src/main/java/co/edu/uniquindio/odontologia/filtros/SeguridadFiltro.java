@@ -9,7 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-@Component
+//@Component
 public class SeguridadFiltro implements Filter {
 
     public static final String PAGINA_INICIO = "/index.xhtml";
@@ -30,7 +30,6 @@ public class SeguridadFiltro implements Filter {
             }
             //Aplicar el filtro a esta carpeta
             if (requestURI.startsWith("/odontologo/") ) {
-                System.out.println("hola 2222");
                 if (userManager != null) {
                     if (userManager.isAutenticado() && userManager.getTipoSesion().equals("odontologo")) {
                         //El usuario está logueado entonces si puede ver la página solicitada
