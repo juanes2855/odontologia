@@ -19,7 +19,6 @@
 </h:head>
 
 <h:body>
-
     <div id="barra_nav" >
         <header>
             <div class="text-bg-white">
@@ -31,7 +30,7 @@
                         </a>
 
                         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 menu-ppal">
-                            <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.tipoSession == 'odontologo'}">
+                            <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.tipoSesion == 'odontologo'}">
                                 <a href="/odontologo/gestion_agenda.xhtml" class="nav-link text-secondary text-center">
                                     <i class="pi pi-calendar" /> <br/>
                                     Agenda

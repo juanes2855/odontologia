@@ -3,6 +3,8 @@ package co.edu.uniquindio.odontologia.filtros;
 import co.edu.uniquindio.odontologia.bean.SeguridadBean;
 import org.springframework.stereotype.Component;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,12 +24,15 @@ public class SeguridadFiltro implements Filter {
             //Obtenemos el objeto seguridadBean de la sesión actual
             SeguridadBean userManager = (SeguridadBean) request.getSession().getAttribute("seguridadBean");
 
+            if (requestURI.endsWith("index.xhtml") || requestURI.equals(request.getContextPath() + "/")) {
+                filterChain.doFilter(servletRequest, servletResponse);
+                return;
+            }
             //Aplicar el filtro a esta carpeta
-            if (requestURI.startsWith("src/main/resources/odontologo/") ) {
-
-
+            if (requestURI.startsWith("/odontologo/") ) {
+                System.out.println("hola 2222");
                 if (userManager != null) {
-                    if (userManager.isAutenticado() && userManager.getTipoSession().equals("odontologo")) {
+                    if (userManager.isAutenticado() && userManager.getTipoSesion().equals("odontologo")) {
                         //El usuario está logueado entonces si puede ver la página solicitada
                         filterChain.doFilter(servletRequest, servletResponse);
                     } else {
@@ -41,7 +46,8 @@ public class SeguridadFiltro implements Filter {
             }
 
         }catch (Exception e) {
-            e.printStackTrace();
+            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("login-bean", fm);
         }
 
     }

@@ -32,12 +32,13 @@ public class SeguridadBean implements Serializable {
     private List<Paciente> pacientes;
 
     @Getter @Setter
-    private String tipoSession;
+    private String tipoSesion;
 
 
     @PostConstruct
     public void inicializar(){
         autenticado = false;
+        System.out.println("hola careehimb");
     }
 
 
@@ -46,7 +47,7 @@ public class SeguridadBean implements Serializable {
         if(!email.isEmpty() && !password.isEmpty()){
             try {
                 odontologo = odontologoServicio.login( email, password );
-                tipoSession = "odontologo";
+                tipoSesion = "odontologo";
                 autenticado = true;
                 return "/index?faces-redirect=true";
 
@@ -64,7 +65,6 @@ public class SeguridadBean implements Serializable {
 
     public String cerrarSesion(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        tipoSession= "";
         return "/index?faces-redirect=true";
     }
 
