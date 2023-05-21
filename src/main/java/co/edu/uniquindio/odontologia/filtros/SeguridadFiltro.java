@@ -23,13 +23,14 @@ public class SeguridadFiltro implements Filter {
             final String requestURI = request.getRequestURI();
             //Obtenemos el objeto seguridadBean de la sesión actual
             SeguridadBean userManager = (SeguridadBean) request.getSession().getAttribute("seguridadBean");
-
-            if (requestURI.endsWith("index.xhtml") || requestURI.equals(request.getContextPath() + "/")) {
+/*
+            if (requestURI.endsWith("index.xhtml") || requestURI.equals(request.getContextPath() + "/")
+                || requestURI.) {
                 filterChain.doFilter(servletRequest, servletResponse);
                 return;
-            }
+            }*/
             //Aplicar el filtro a esta carpeta
-            if (requestURI.startsWith("/odontologo/") ) {
+            if (requestURI.startsWith(request.getContextPath()+"/odontologo/") ) {
                 if (userManager != null) {
                     if (userManager.isAutenticado() && userManager.getTipoSesion().equals("odontologo")) {
                         //El usuario está logueado entonces si puede ver la página solicitada
