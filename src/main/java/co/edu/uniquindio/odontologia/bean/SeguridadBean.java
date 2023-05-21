@@ -38,7 +38,7 @@ public class SeguridadBean implements Serializable {
     @PostConstruct
     public void inicializar(){
         autenticado = false;
-        System.out.println("hola careehimb");
+
     }
 
 
