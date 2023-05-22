@@ -44,8 +44,7 @@ public class SeguridadFiltro implements Filter {
             }
 
         }catch (Exception e) {
-            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
-            FacesContext.getCurrentInstance().addMessage("login-bean", fm);
+            e.printStackTrace();
         }
 
     }

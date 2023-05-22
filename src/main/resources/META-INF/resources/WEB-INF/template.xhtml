@@ -36,6 +36,12 @@
                                     Agenda
                                 </a>
                             </li>
+                            <li jsf:rendered="#{seguridadBean.autenticado and seguridadBean.tipoSesion == 'odontologo'}">
+                                <a href="/odontologo/gestion_pacientes.xhtml" class="nav-link text-secondary text-center">
+                                    <i class="pi pi-user" /> <br/>
+                                    Pacientes
+                                </a>
+                            </li>
                             <li jsf:rendered="#{seguridadBean.autenticado}" >
                                 <div class="px-3 py-2">
                                     <div class="container d-flex flex-wrap justify-content-end">

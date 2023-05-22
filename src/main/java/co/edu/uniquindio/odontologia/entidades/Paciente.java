@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 @Entity
@@ -74,5 +75,11 @@ public class Paciente implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
         this.fechaRegistro = LocalDate.now();
         this.correo = correo;
+    }
+
+    public int getEdad(){
+        LocalDate fechaActual = LocalDate.now();
+        Period periodo = Period.between(fechaNacimiento, fechaActual);
+        return periodo.getYears();
     }
 }

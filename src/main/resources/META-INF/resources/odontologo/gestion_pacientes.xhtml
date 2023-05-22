@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/template.xhtml">
+    <ui:define name="title">Gestionar Pacientes</ui:define>
+    <ui:define name="content">
+        <div class="container mt-4 mb-4">
+
+            <h:form id="crud_paciente">
+                <p:toolbar>
+                    <p:toolbarGroup>
+                        <p:commandButton value="Agregar" icon="pi pi-plus" styleClass="ui-button-success me-3"
+                                         action="#{pacienteBean.crearPacienteDialogo}" update="dialogo_crear" oncomplete="PF('crear_paciente').show()"/>
+                        <p:commandButton id="btn_borrar" value="#{pacienteBean.textoBtnBorrar}" icon="pi pi-trash" disabled="#{pacienteBean.pacientesSeleccionados.size()==0}" styleClass="ui-button-danger"
+                                         action="#{pacienteBean.eliminarPaciente}" update="crud_paciente:lista,@this" />
+                    </p:toolbarGroup>
+
+                </p:toolbar>
+
+                <p:dataTable id="lista"
+                             value="#{pacienteBean.pacientes}" var="paciente"
+                             paginator="true" rows="10"
+                             rowKey="#{paciente.documento}"
+                             paginatorPosition="bottom"
+                             selection="#{pacienteBean.pacientesSeleccionados}">
+
+
+                    <p:ajax event="rowSelect" update="crud_paciente:btn_borrar" />
+                    <p:ajax event="rowUnselect" update="crud_paciente:btn_borrar" />
+                    <p:ajax event="rowSelectCheckbox" update="crud_paciente:btn_borrar" />
+                    <p:ajax event="rowUnselectCheckbox" update="crud_paciente:btn_borrar" />
+                    <p:ajax event="toggleSelect" update="crud_paciente:btn_borrar" />
+
+                    <p:column selectionMode="multiple" exportable="false" />
+
+                    <p:column headerText="Documento">
+                        <h:outputText value="#{paciente.documento}" />
+                    </p:column>
+
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{paciente.nombre}" />
+                    </p:column>
+
+                    <p:column headerText="Edad">
+                        <h:outputText value="#{paciente.getEdad()}" />
+                    </p:column>
+
+
+
+                    <p:column headerText="">
+                        <p:commandButton styleClass="edit-button rounded-button ui-button-success" icon="pi pi-pencil"
+                                         action="#{pacienteBean.seleccionarPaciente(paciente)}" update="dialogo_crear" oncomplete="PF('crear_paciente').show()"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+
+            <p:dialog id="dialogo_crear" widgetVar="crear_paciente" modal="true" header="#{pacienteBean.mensajeCrear}" showEffect="fade">
+                <h:form>
+                    <h:panelGrid columns="3" cellpadding="5">
+
+                        <p:outputLabel for="documento_paciente" value="Documento"/>
+                        <p:inputText id="documento_paciente" value="#{pacienteBean.paciente.documento}" required="true" />
+                        <p:message for="documento_paciente" />
+
+                        <p:outputLabel for="nombre_paciente" value="Nombre"/>
+                        <p:inputText id="nombre_paciente" value="#{pacienteBean.paciente.nombre}" required="true" />
+                        <p:message for="nombre_paciente" />
+
+                        <p:outputLabel for="telefono_paciente" value="Telefono"/>
+                        <p:inputText id="telefono_paciente" value="#{pacienteBean.paciente.telefono}" required="true" />
+                        <p:message for="telefono_paciente" />
+
+                        <p:outputLabel for="direccion_paciente" value="Dirección"/>
+                        <p:inputText id="direccion_paciente" value="#{pacienteBean.paciente.direccion}" required="true" />
+                        <p:message for="direccion_paciente" />
+
+                        <p:outputLabel for="genero_paciente" value="Genero"/>
+                        <p:selectOneRadio id="genero_paciente" value="#{pacienteBean.paciente.genero}" >
+                            <f:selectItem itemLabel="Femenino" itemValue="F" />
+                            <f:selectItem itemLabel="Masculino" itemValue="M" />
+                        </p:selectOneRadio>
+                        <p:message for="genero_paciente" />
+
+                        <p:outputLabel for="fechaNac_paciente" value="Fecha Nacimiento"/>
+                        <p:datePicker id="fechaNac_paciente" value="#{pacienteBean.paciente.fechaNacimiento}" required="true" />
+                        <p:message for="fechaNac_paciente" />
+
+                        <p:outputLabel for="correo_paciente" value="Correo"/>
+                        <p:inputText id="correo_paciente" value="#{pacienteBean.paciente.correo}" required="true" />
+                        <p:message for="correo_paciente" />
+
+
+                    </h:panelGrid>
+                    <p:commandButton value="#{pacienteBean.mensajeCrear}" action="#{pacienteBean.crearPaciente}" styleClass="mt-4" icon="pi pi-plus-circle" update="@form,crud_paciente:lista" />
+                    <p:growl for="mensaje_bean"  showDetail="true"/>
+                </h:form>
+            </p:dialog>
+
+        </div>
+
+        <script>
+            PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Sólo hora',
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                millisecondText: 'Milisegundo',
+                currentText: 'Fecha actual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText: 'Todo el día',
+                today: 'Hoy',
+                clear: 'Claro'
+            };
+            PrimeFaces.locales ['de'] = {
+                closeText: 'Schließen',
+                prevText: 'Zurück',
+                nextText: 'Weiter',
+                monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+                dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+                dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+                dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+                weekHeader: 'Woche',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Nur Zeit',
+                timeText: 'Zeit',
+                hourText: 'Stunde',
+                minuteText: 'Minute',
+                secondText: 'Sekunde',
+                millisecondText: 'Millisekunde',
+                currentText: 'Aktuelles Datum',
+                ampm: false,
+                month: 'Monat',
+                week: 'Woche',
+                day: 'Tag',
+                allDayText: 'Ganzer Tag',
+                today: 'Heute',
+                clear: 'Löschen'
+            };
+        </script>
+
+        <script>
+            //<![CDATA[
+            function dateTemplateFunc(date) {
+                return '<span style="background-color:' + ((date.day < 21 && date.day > 10) ? '#81C784' : 'inherit') + ';border-radius:50%;width: 2.5rem;height: 2.5rem;line-height: 2.5rem;display: flex;align-items: center;justify-content: center;">' + date.day + '</span>';
+            }
+
+            //]]>
+        </script>
+
+        <style>
+            .value {
+                font-weight: bold;
+            }
+        </style>
+
+    </ui:define>
+</ui:composition>
+</html>
