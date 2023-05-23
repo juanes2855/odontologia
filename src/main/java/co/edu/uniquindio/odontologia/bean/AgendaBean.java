@@ -21,6 +21,9 @@ import java.util.List;
 @ViewScoped
 public class AgendaBean implements Serializable {
 
+    private static final String MENSAJE_BEAN = "mensaje_bean";
+    private static final String ALERTA = "Alerta";
+
     @Autowired
     private transient OdontologoServicio odontologoServicio;
 
@@ -63,16 +66,16 @@ public class AgendaBean implements Serializable {
                 Agenda registro = odontologoServicio.crearAgenda(agenda);
                 agendas.add(registro);
                 agenda = new Agenda();
-                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Agenda creado correctamente");
-                FacesContext.getCurrentInstance().addMessage("mensaje_bean", fm);
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, ALERTA, "Agenda creado correctamente");
+                FacesContext.getCurrentInstance().addMessage(MENSAJE_BEAN, fm);
             }else{
                 odontologoServicio.actualizarAgenda(agenda);
-                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Agenda actualizado correctamente");
-                FacesContext.getCurrentInstance().addMessage("mensaje_bean", fm);
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, ALERTA, "Agenda actualizado correctamente");
+                FacesContext.getCurrentInstance().addMessage(MENSAJE_BEAN, fm);
             }
         }catch (Exception e){
-            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
-            FacesContext.getCurrentInstance().addMessage("mensaje_bean",fm);
+            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, ALERTA, e.getMessage());
+            FacesContext.getCurrentInstance().addMessage(MENSAJE_BEAN,fm);
         }
 
     }
@@ -86,8 +89,8 @@ public class AgendaBean implements Serializable {
             }
             agendasSeleccionadas.clear();
         }catch (Exception e){
-            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
-            FacesContext.getCurrentInstance().addMessage("mensaje_bean",fm);;
+            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, ALERTA, e.getMessage());
+            FacesContext.getCurrentInstance().addMessage(MENSAJE_BEAN,fm);
         }
 
     }
