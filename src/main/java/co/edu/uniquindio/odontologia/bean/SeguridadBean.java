@@ -19,13 +19,19 @@ import java.util.List;
 @Scope("session")
 public class SeguridadBean implements Serializable {
 
+    private static final String LOGIN_BEAN = "login_bean";
+    private static final String ALERTA = "Alerta";
+
     @Autowired
     private transient OdontologoServicio odontologoServicio;
 
     @Getter @Setter
     private boolean autenticado;
     @Setter @Getter
-    private String email, password;
+    private String email;
+
+    @Setter @Getter
+    private String password;
     @Getter @Setter
     private Odontologo odontologo;
     @Getter @Setter
@@ -52,12 +58,12 @@ public class SeguridadBean implements Serializable {
                 return "/index?faces-redirect=true";
 
             } catch (Exception e) {
-                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
-                FacesContext.getCurrentInstance().addMessage("login-bean", fm);
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, ALERTA, e.getMessage());
+                FacesContext.getCurrentInstance().addMessage(LOGIN_BEAN, fm);
             }
         }else{
-            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "El correo y la contraseña son necesarios");
-            FacesContext.getCurrentInstance().addMessage("login-bean", fm);
+            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, ALERTA, "El correo y la contraseña son necesarios");
+            FacesContext.getCurrentInstance().addMessage(LOGIN_BEAN, fm);
         }
 
         return null;

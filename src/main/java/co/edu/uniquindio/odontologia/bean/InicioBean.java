@@ -17,7 +17,7 @@ import java.util.List;
 public class InicioBean implements Serializable {
 
     @Autowired
-    private OdontologoServicio odontologoServicio;
+    private transient OdontologoServicio odontologoServicio;
 
     @Getter
     @Setter

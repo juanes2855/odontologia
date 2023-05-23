@@ -20,6 +20,9 @@ import java.util.List;
 @Component
 @ViewScoped
 public class PacienteBean implements Serializable {
+
+    private static final String MENSAJE_BEAN = "mensaje_bean";
+    private static final String ALERTA = "Alerta";
     @Autowired
     private transient OdontologoServicio odontologoServicio;
     @Getter
@@ -58,16 +61,16 @@ public class PacienteBean implements Serializable {
                 Paciente registro = odontologoServicio.crearPaciente(paciente);
                 pacientes.add(registro);
                 paciente = new Paciente();
-                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "El paciente "+registro.getNombre() + " fue creado correctamente");
-                FacesContext.getCurrentInstance().addMessage("mensaje_bean", fm);
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, ALERTA, "El paciente "+registro.getNombre() + " fue creado correctamente");
+                FacesContext.getCurrentInstance().addMessage(MENSAJE_BEAN, fm);
             }else{
                 odontologoServicio.actualizarPaciente(paciente);
-                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Paciente actualizado correctamente");
-                FacesContext.getCurrentInstance().addMessage("mensaje_bean", fm);
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, ALERTA, "Paciente actualizado correctamente");
+                FacesContext.getCurrentInstance().addMessage(MENSAJE_BEAN, fm);
             }
         }catch (Exception e){
-            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
-            FacesContext.getCurrentInstance().addMessage("mensaje_bean",fm);
+            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, ALERTA, e.getMessage());
+            FacesContext.getCurrentInstance().addMessage(MENSAJE_BEAN,fm);
         }
     }
 
@@ -79,8 +82,8 @@ public class PacienteBean implements Serializable {
             }
             pacientesSeleccionados.clear();
         }catch (Exception e){
-            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
-            FacesContext.getCurrentInstance().addMessage("mensaje_bean",fm);;
+            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, ALERTA, e.getMessage());
+            FacesContext.getCurrentInstance().addMessage(MENSAJE_BEAN,fm);
         }
     }
 
@@ -93,7 +96,8 @@ public class PacienteBean implements Serializable {
     }
 
     public String getMensajeCrear(){
-        return editar ? "Editar Paciente" : "Crear paciente";
+        String mensaje =  editar ? "Editar Paciente" : "Crear paciente";
+        return mensaje;
     }
     public void seleccionarPaciente(Paciente pacienteSeleccionado){
         this.paciente=pacienteSeleccionado;
