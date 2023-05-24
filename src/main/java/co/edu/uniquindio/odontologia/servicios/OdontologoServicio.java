@@ -1,20 +1,21 @@
 package co.edu.uniquindio.odontologia.servicios;
 
 import co.edu.uniquindio.odontologia.entidades.*;
+import co.edu.uniquindio.odontologia.exceptions.ExcepcionServicios;
 
 import java.util.List;
 
 public interface OdontologoServicio {
 
-    Odontologo login(String correo, String password) throws Exception;
+    Odontologo login(String correo, String password)  throws ExcepcionServicios;
     Odontologo crearOdontologo(Odontologo odontologo);
     List<Odontologo> listarOdontologos();
 
 
     Agenda crearAgenda(Agenda agenda);
-    Agenda actualizarAgenda(Agenda agenda) throws Exception;
-    void eliminarAgenda(Integer id) throws  Exception;
-    Agenda obtenerAgenda(Integer idAgenda) throws Exception;
+    Agenda actualizarAgenda(Agenda agenda) throws ExcepcionServicios;
+    void eliminarAgenda(Integer id)  throws ExcepcionServicios;
+    Agenda obtenerAgenda(Integer idAgenda)  throws ExcepcionServicios;
     List<Agenda> listarAgendas();
 
 

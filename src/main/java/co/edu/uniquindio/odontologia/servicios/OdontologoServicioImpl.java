@@ -1,6 +1,7 @@
 package co.edu.uniquindio.odontologia.servicios;
 
 import co.edu.uniquindio.odontologia.entidades.*;
+import co.edu.uniquindio.odontologia.exceptions.ExcepcionServicios;
 import co.edu.uniquindio.odontologia.repo.*;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +38,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
     }
 
     @Override
-    public Odontologo login(String correo, String password) throws Exception {
+    public Odontologo login(String correo, String password)  throws ExcepcionServicios {
         Odontologo odontologo = odontologoRepo.findByCorreo(correo).orElse(null);
         if (odontologo != null) {
             //   StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
@@ -46,13 +47,13 @@ public class OdontologoServicioImpl implements OdontologoServicio {
             //        throw new Exception("La contraseña es incorrecta");
             //    }
             if (!password.equals(odontologo.getPassword())) {
-                throw new Exception("La contraseña es incorrecta");
+                throw new ExcepcionServicios("La contraseña es incorrecta");
             }else {
                 return odontologo;
             }
         }
         else {
-            throw new Exception("El Odontologo no existe");
+            throw new ExcepcionServicios("El Odontologo no existe");
         }
 
     }
@@ -84,33 +85,33 @@ public class OdontologoServicioImpl implements OdontologoServicio {
     }
 
     @Override
-    public Agenda actualizarAgenda(Agenda agenda) throws Exception {
+    public Agenda actualizarAgenda(Agenda agenda) throws ExcepcionServicios {
         Optional<Agenda> guardado = agendaRepo.findById(agenda.getId());
 
         if (guardado.isEmpty()) {
-            throw new Exception("La agenda no existe");
+            throw new ExcepcionServicios("La agenda no existe");
         }
 
         return agendaRepo.save(agenda);
     }
 
     @Override
-    public void eliminarAgenda(Integer id) throws Exception {
+    public void eliminarAgenda(Integer id)  throws ExcepcionServicios {
         Optional<Agenda> guardado = agendaRepo.findById(id);
 
         if (guardado.isEmpty()) {
-            throw new Exception("La agenda no existe");
+            throw new ExcepcionServicios("La agenda no existe");
         }
 
         agendaRepo.delete(guardado.get());
     }
 
     @Override
-    public Agenda obtenerAgenda(Integer idAgenda) throws Exception {
+    public Agenda obtenerAgenda(Integer idAgenda)  throws ExcepcionServicios {
         Optional<Agenda> guardado = agendaRepo.findById(idAgenda);
 
         if (guardado.isEmpty()) {
-            throw new Exception("La agenda no existe");
+            throw new ExcepcionServicios("La agenda no existe");
         }
 
         return guardado.get();

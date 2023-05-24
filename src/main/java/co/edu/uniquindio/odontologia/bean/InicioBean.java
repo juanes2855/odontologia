@@ -1,6 +1,7 @@
 package co.edu.uniquindio.odontologia.bean;
 
 import co.edu.uniquindio.odontologia.servicios.OdontologoServicio;
+import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+@Generated
 @Component
 @ViewScoped
 public class InicioBean implements Serializable {

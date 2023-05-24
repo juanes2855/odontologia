@@ -3,6 +3,7 @@ package co.edu.uniquindio.odontologia.bean;
 import co.edu.uniquindio.odontologia.entidades.Agenda;
 import co.edu.uniquindio.odontologia.entidades.Paciente;
 import co.edu.uniquindio.odontologia.servicios.OdontologoServicio;
+import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+@Generated
 @Component
 @ViewScoped
 public class PacienteBean implements Serializable {

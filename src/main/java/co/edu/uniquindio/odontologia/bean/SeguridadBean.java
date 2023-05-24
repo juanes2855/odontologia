@@ -3,6 +3,7 @@ package co.edu.uniquindio.odontologia.bean;
 import co.edu.uniquindio.odontologia.entidades.Odontologo;
 import co.edu.uniquindio.odontologia.entidades.Paciente;
 import co.edu.uniquindio.odontologia.servicios.OdontologoServicio;
+import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.List;
 
+@Generated
 @Component
 @Scope("session")
 public class SeguridadBean implements Serializable {

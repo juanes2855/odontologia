@@ -4,6 +4,7 @@ import co.edu.uniquindio.odontologia.entidades.Agenda;
 import co.edu.uniquindio.odontologia.entidades.Odontologo;
 import co.edu.uniquindio.odontologia.entidades.Paciente;
 import co.edu.uniquindio.odontologia.servicios.OdontologoServicio;
+import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+@Generated
 @Component
 @ViewScoped
 public class AgendaBean implements Serializable {
