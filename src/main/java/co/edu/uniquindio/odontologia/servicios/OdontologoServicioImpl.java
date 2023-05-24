@@ -10,6 +10,15 @@ import java.util.Optional;
 
 @Service
 public class OdontologoServicioImpl implements OdontologoServicio {
+    private static final String AGENDA_NOEXISTE = "La agenda no existe";
+    private static final String HISTORIALMEDICO_NOEXISTE = "El historial medico no existe";
+    private static final String CONCENTIMIENTO_NOEXISTE = "El concentimiento no existe";
+    private static final String HISTORIALTRATAMIENTO_NOEXISTE = "El historial de Tratamiento no existe";
+    private static final String INFOBASICA_NOEXISTE = "La información basica no existe";
+    private static final String INSTRUMENTAL_NOEXISTE = "El instrumental no existe";
+    private static final String ODONTOGRAMA_NOEXISTE = "El odontograma no existe";
+    private static final String PACIENTE_NOEXISTE = "El paciente no existe";
+    private static final String TRATAMIENTO_NOEXISTE = "El tratamiento no existe";
 
     private final AgendaRepo agendaRepo;
     private final ConcentimientoRepo concentimientoRepo;
@@ -41,11 +50,6 @@ public class OdontologoServicioImpl implements OdontologoServicio {
     public Odontologo login(String correo, String password)  throws ExcepcionServicios {
         Odontologo odontologo = odontologoRepo.findByCorreo(correo).orElse(null);
         if (odontologo != null) {
-            //   StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
-
-            //    if (!spe.checkPassword(password, odontologo.getPassword())) {
-            //        throw new  ExcepcionServicios("La contraseña es incorrecta");
-            //    }
             if (!password.equals(odontologo.getPassword())) {
                 throw new ExcepcionServicios("La contraseña es incorrecta");
             }else {
@@ -89,7 +93,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Agenda> guardado = agendaRepo.findById(agenda.getId());
 
         if (guardado.isEmpty()) {
-            throw new ExcepcionServicios("La agenda no existe");
+            throw new ExcepcionServicios(AGENDA_NOEXISTE);
         }
 
         return agendaRepo.save(agenda);
@@ -100,7 +104,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Agenda> guardado = agendaRepo.findById(id);
 
         if (guardado.isEmpty()) {
-            throw new ExcepcionServicios("La agenda no existe");
+            throw new ExcepcionServicios(AGENDA_NOEXISTE);
         }
 
         agendaRepo.delete(guardado.get());
@@ -111,7 +115,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Agenda> guardado = agendaRepo.findById(idAgenda);
 
         if (guardado.isEmpty()) {
-            throw new ExcepcionServicios("La agenda no existe");
+            throw new ExcepcionServicios(AGENDA_NOEXISTE);
         }
 
         return guardado.get();
@@ -179,7 +183,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<HistorialMedico> guardado = historialMedicoRepo.findById(historialMedico.getId());
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El historial medico no existe");
+            throw new  ExcepcionServicios(HISTORIALMEDICO_NOEXISTE);
         }
 
         return historialMedicoRepo.save(historialMedico);
@@ -190,7 +194,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<HistorialMedico> guardado = historialMedicoRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El historial medico no existe");
+            throw new  ExcepcionServicios(HISTORIALMEDICO_NOEXISTE);
         }
 
         historialMedicoRepo.delete(guardado.get());
@@ -206,7 +210,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<HistorialMedico> guardado = historialMedicoRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El historial medico no existe");
+            throw new  ExcepcionServicios(HISTORIALMEDICO_NOEXISTE);
         }
 
         return guardado.get();
@@ -222,7 +226,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Concentimiento> guardado = concentimientoRepo.findById(concentimiento.getId());
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El concentimiento no existe");
+            throw new  ExcepcionServicios(CONCENTIMIENTO_NOEXISTE);
         }
 
         return concentimientoRepo.save(concentimiento);
@@ -233,7 +237,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Concentimiento> guardado = concentimientoRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El concentimiento no existe");
+            throw new  ExcepcionServicios(CONCENTIMIENTO_NOEXISTE);
         }
 
         concentimientoRepo.delete(guardado.get());
@@ -249,7 +253,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Concentimiento> guardado = concentimientoRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El concentimiento no existe");
+            throw new  ExcepcionServicios(CONCENTIMIENTO_NOEXISTE);
         }
 
         return guardado.get();
@@ -265,7 +269,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<HistorialTratamiento> guardado = historialTratamientoRepo.findById(historialTratamiento.getId());
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El historial de Tratamiento no existe");
+            throw new  ExcepcionServicios(HISTORIALTRATAMIENTO_NOEXISTE);
         }
 
         return historialTratamientoRepo.save(historialTratamiento);
@@ -276,7 +280,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<HistorialTratamiento> guardado = historialTratamientoRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El historial de Tratamiento no existe");
+            throw new  ExcepcionServicios(HISTORIALTRATAMIENTO_NOEXISTE);
         }
 
         historialTratamientoRepo.delete(guardado.get());
@@ -292,7 +296,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<HistorialTratamiento> guardado = historialTratamientoRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El historial de Tratamiento no existe");
+            throw new  ExcepcionServicios(HISTORIALTRATAMIENTO_NOEXISTE);
         }
 
         return guardado.get();
@@ -308,7 +312,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<InfoBasica> guardado = infoBasicaRepo.findById(infoBasica.getId());
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("La información basica no existe");
+            throw new  ExcepcionServicios(INFOBASICA_NOEXISTE);
         }
 
         return infoBasicaRepo.save(infoBasica);
@@ -319,7 +323,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<InfoBasica> guardado = infoBasicaRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("La información basica no existe");
+            throw new  ExcepcionServicios(INFOBASICA_NOEXISTE);
         }
 
         infoBasicaRepo.delete(guardado.get());
@@ -335,7 +339,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<InfoBasica> guardado = infoBasicaRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("La información basica no existe");
+            throw new  ExcepcionServicios(INFOBASICA_NOEXISTE);
         }
 
         return guardado.get();
@@ -351,7 +355,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Instrumental> guardado = instrumentalRepo.findById(instrumental.getId());
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El instrumental no existe");
+            throw new  ExcepcionServicios(INSTRUMENTAL_NOEXISTE);
         }
 
         return instrumentalRepo.save(instrumental);
@@ -362,7 +366,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Instrumental> guardado = instrumentalRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El instrumental no existe");
+            throw new  ExcepcionServicios(INSTRUMENTAL_NOEXISTE);
         }
 
         instrumentalRepo.delete(guardado.get());
@@ -378,7 +382,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Instrumental> guardado = instrumentalRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El instrumental no existe");
+            throw new  ExcepcionServicios(INSTRUMENTAL_NOEXISTE);
         }
 
         return guardado.get();
@@ -394,7 +398,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Odontograma> guardado = odontogramaRepo.findById(odontograma.getId());
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El odontograma no existe");
+            throw new  ExcepcionServicios(ODONTOGRAMA_NOEXISTE);
         }
 
         return odontogramaRepo.save(odontograma);
@@ -405,7 +409,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Odontograma> guardado = odontogramaRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El odontograma no existe");
+            throw new  ExcepcionServicios(ODONTOGRAMA_NOEXISTE);
         }
 
         odontogramaRepo.delete(guardado.get());
@@ -421,7 +425,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Odontograma> guardado = odontogramaRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El odontograma no existe");
+            throw new  ExcepcionServicios(ODONTOGRAMA_NOEXISTE);
         }
 
         return guardado.get();
@@ -437,7 +441,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Paciente> guardado = pacienteRepo.findById(paciente.getDocumento());
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El paciente no existe");
+            throw new  ExcepcionServicios(PACIENTE_NOEXISTE);
         }
 
         return pacienteRepo.save(paciente);
@@ -448,7 +452,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Paciente> guardado = pacienteRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El paciente no existe");
+            throw new  ExcepcionServicios(PACIENTE_NOEXISTE);
         }
 
         pacienteRepo.delete(guardado.get());
@@ -464,7 +468,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Paciente> guardado = pacienteRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El paciente no existe");
+            throw new  ExcepcionServicios(PACIENTE_NOEXISTE);
         }
 
         return guardado.get();
@@ -480,7 +484,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Tratamiento> guardado = tratamientoRepo.findById(tratamiento.getId());
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El tratamiento no existe");
+            throw new  ExcepcionServicios(TRATAMIENTO_NOEXISTE);
         }
 
         return tratamientoRepo.save(tratamiento);
@@ -491,7 +495,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Tratamiento> guardado = tratamientoRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El tratamiento no existe");
+            throw new  ExcepcionServicios(TRATAMIENTO_NOEXISTE);
         }
 
         tratamientoRepo.delete(guardado.get());
@@ -507,7 +511,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         Optional<Tratamiento> guardado = tratamientoRepo.findById(codigo);
 
         if (guardado.isEmpty()) {
-            throw new  ExcepcionServicios("El tratamiento no existe");
+            throw new  ExcepcionServicios(TRATAMIENTO_NOEXISTE);
         }
 
         return guardado.get();
