@@ -1,6 +1,8 @@
 package co.edu.uniquindio.odontologia.test;
 
 import co.edu.uniquindio.odontologia.entidades.Odontologo;
+import co.edu.uniquindio.odontologia.exceptions.ExcepcionServicios;
+import co.edu.uniquindio.odontologia.repo.HistorialCitaRepo;
 import co.edu.uniquindio.odontologia.servicios.OdontologoServicio;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +15,10 @@ import org.springframework.test.context.jdbc.Sql;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 
 @SpringBootTest
@@ -110,6 +114,8 @@ class OdontologoServicioTest {
             throw new RuntimeException(e);
         }
     }
+
+
     @Test
     @Sql("classpath:dataset.sql")
     void eliminarHistorialCitaTest() {
