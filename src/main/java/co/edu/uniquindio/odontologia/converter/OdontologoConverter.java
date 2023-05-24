@@ -1,7 +1,9 @@
 package co.edu.uniquindio.odontologia.converter;
 
 import co.edu.uniquindio.odontologia.entidades.Odontologo;
+import co.edu.uniquindio.odontologia.exceptions.ExcepcionServicios;
 import co.edu.uniquindio.odontologia.servicios.OdontologoServicio;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,7 @@ public class OdontologoConverter implements Converter<Odontologo>, Serializable 
 
     @Autowired
     private transient OdontologoServicio odontologoServicio;
+
 
     @Override
     public Odontologo getAsObject(FacesContext context, UIComponent component, String value) {

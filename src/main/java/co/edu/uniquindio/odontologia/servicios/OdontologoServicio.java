@@ -20,64 +20,64 @@ public interface OdontologoServicio {
 
 
     HistorialCita crearHistorialCita(HistorialCita historialCita);
-    HistorialCita actualizarHistorialCita(HistorialCita historialCita) throws Exception;
-    void eliminarHistorialCita(Integer id) throws Exception;
+    HistorialCita actualizarHistorialCita(HistorialCita historialCita) throws ExcepcionServicios;
+    void eliminarHistorialCita(Integer id) throws ExcepcionServicios;
     List<HistorialCita> listarHistorialCitas();
-    HistorialCita obtenerHistorialCita(Integer id) throws Exception;
+    HistorialCita obtenerHistorialCita(Integer id) throws ExcepcionServicios;
 
     HistorialMedico crearHistorialMedico(HistorialMedico historialMedico);
-    HistorialMedico actualizarHistorialMedico(HistorialMedico historialMedico) throws Exception;
-    void eliminarHistorialMedico(Integer codigo) throws Exception;
+    HistorialMedico actualizarHistorialMedico(HistorialMedico historialMedico) throws ExcepcionServicios;
+    void eliminarHistorialMedico(Integer codigo) throws ExcepcionServicios;
     List<HistorialMedico> listarHistorialMedicos();
-    HistorialMedico obtenerHistorialMedico(Integer codigo) throws Exception;
+    HistorialMedico obtenerHistorialMedico(Integer codigo) throws ExcepcionServicios;
 
 
     Concentimiento crearConcentimiento(Concentimiento concentimiento);
-    Concentimiento actualizarConcentimiento(Concentimiento concentimiento) throws Exception;
-    void eliminarConcentimiento(Integer codigo) throws Exception;
+    Concentimiento actualizarConcentimiento(Concentimiento concentimiento) throws ExcepcionServicios;
+    void eliminarConcentimiento(Integer codigo) throws ExcepcionServicios;
     List<Concentimiento> listarConcentimientos();
-    Concentimiento obtenerConcentimiento(Integer codigo) throws Exception;
+    Concentimiento obtenerConcentimiento(Integer codigo) throws ExcepcionServicios;
 
 
     HistorialTratamiento crearHistorialTratamiento(HistorialTratamiento historialTratamiento);
-    HistorialTratamiento actualizarHistorialTratamiento(HistorialTratamiento historialTratamiento) throws Exception;
-    void eliminarHistorialTratamiento(Integer codigo) throws Exception;
+    HistorialTratamiento actualizarHistorialTratamiento(HistorialTratamiento historialTratamiento) throws ExcepcionServicios;
+    void eliminarHistorialTratamiento(Integer codigo) throws ExcepcionServicios;
     List<HistorialTratamiento> listarHistorialTratamientos();
-    HistorialTratamiento obtenerHistorialTratamiento(Integer codigo) throws Exception;
+    HistorialTratamiento obtenerHistorialTratamiento(Integer codigo) throws ExcepcionServicios;
 
     
     InfoBasica crearInfoBasica(InfoBasica infoBasica);
-    InfoBasica actualizarInfoBasica(InfoBasica infoBasica) throws Exception;
-    void eliminarInfoBasica(Integer codigo) throws Exception;
+    InfoBasica actualizarInfoBasica(InfoBasica infoBasica) throws ExcepcionServicios;
+    void eliminarInfoBasica(Integer codigo) throws ExcepcionServicios;
     List<InfoBasica> listarInfoBasicas();
-    InfoBasica obtenerInfoBasica(Integer codigo) throws Exception;
+    InfoBasica obtenerInfoBasica(Integer codigo) throws ExcepcionServicios;
 
 
     Instrumental crearInstrumental(Instrumental instrumental);
-    Instrumental actualizarInstrumental(Instrumental instrumental) throws Exception;
-    void eliminarInstrumental(Integer codigo) throws Exception;
+    Instrumental actualizarInstrumental(Instrumental instrumental) throws ExcepcionServicios;
+    void eliminarInstrumental(Integer codigo) throws ExcepcionServicios;
     List<Instrumental> listarInstrumentales();
-    Instrumental obtenerInstrumental(Integer codigo) throws Exception;
+    Instrumental obtenerInstrumental(Integer codigo) throws ExcepcionServicios;
 
 
     Odontograma crearOdontograma(Odontograma odontograma);
-    Odontograma actualizarOdontograma(Odontograma odontograma) throws Exception;
-    void eliminarOdontograma(Integer codigo) throws Exception;
+    Odontograma actualizarOdontograma(Odontograma odontograma) throws ExcepcionServicios;
+    void eliminarOdontograma(Integer codigo) throws ExcepcionServicios;
     List<Odontograma> listarOdontogramas();
-    Odontograma obtenerOdontograma(Integer codigo) throws Exception;
+    Odontograma obtenerOdontograma(Integer codigo) throws ExcepcionServicios;
 
 
     Paciente crearPaciente(Paciente paciente);
-    Paciente actualizarPaciente(Paciente paciente) throws Exception;
-    void eliminarPaciente(Integer codigo) throws Exception;
+    Paciente actualizarPaciente(Paciente paciente) throws ExcepcionServicios;
+    void eliminarPaciente(Integer codigo) throws ExcepcionServicios;
     List<Paciente> listarPacientes();
-    Paciente obtenerPaciente(Integer codigo) throws Exception;
+    Paciente obtenerPaciente(Integer codigo) throws ExcepcionServicios;
 
 
     Tratamiento crearTratamiento(Tratamiento tratamiento);
-    Tratamiento actualizarTratamiento(Tratamiento tratamiento) throws Exception;
-    void eliminarTratamiento(Integer codigo) throws Exception;
+    Tratamiento actualizarTratamiento(Tratamiento tratamiento) throws ExcepcionServicios;
+    void eliminarTratamiento(Integer codigo) throws ExcepcionServicios;
     List<Tratamiento> listarTratamientos();
-    Tratamiento obtenerTratamiento(Integer codigo) throws Exception;
-    Odontologo obtenerOdontologo(int id) throws Exception;
+    Tratamiento obtenerTratamiento(Integer codigo) throws ExcepcionServicios;
+    Odontologo obtenerOdontologo(int id) throws ExcepcionServicios;
 }
