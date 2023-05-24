@@ -1,6 +1,7 @@
 package co.edu.uniquindio.odontologia.converter;
 
 import co.edu.uniquindio.odontologia.entidades.Paciente;
+import co.edu.uniquindio.odontologia.exceptions.ExcepcionEjecucion;
 import co.edu.uniquindio.odontologia.servicios.OdontologoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,7 +23,7 @@ public class PacienteConverter implements Converter<Paciente>, Serializable {
         try {
             paciente = odontologoServicio.obtenerPaciente(Integer.parseInt(value));
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new ExcepcionEjecucion(e);
         }
         return paciente;
     }
