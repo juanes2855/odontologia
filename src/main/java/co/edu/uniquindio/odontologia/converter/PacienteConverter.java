@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class PacienteConverter implements Converter<Paciente>, Serializable {
 
     @Autowired
-    private OdontologoServicio odontologoServicio;
+    private transient OdontologoServicio odontologoServicio;
 
     @Override
     public Paciente getAsObject(FacesContext context, UIComponent component, String value) {

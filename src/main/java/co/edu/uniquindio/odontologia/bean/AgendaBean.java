@@ -105,8 +105,7 @@ public class AgendaBean implements Serializable {
     }
 
     public String getMensajeCrear(){
-        String mensaje = editar ? "Editar Agenda" : "Crear Agenda";
-        return mensaje;
+        return editar ? "Editar Agenda" : "Crear Agenda";
     }
     public void seleccionarAgenda(Agenda agendaSeleccionado){
         this.agenda=agendaSeleccionado;

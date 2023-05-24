@@ -96,8 +96,7 @@ public class PacienteBean implements Serializable {
     }
 
     public String getMensajeCrear(){
-        String mensaje =  editar ? "Editar Paciente" : "Crear paciente";
-        return mensaje;
+        return  editar ? "Editar Paciente" : "Crear paciente";
     }
     public void seleccionarPaciente(Paciente pacienteSeleccionado){
         this.paciente=pacienteSeleccionado;

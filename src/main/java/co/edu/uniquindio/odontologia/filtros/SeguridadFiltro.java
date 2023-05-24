@@ -2,9 +2,6 @@ package co.edu.uniquindio.odontologia.filtros;
 
 import co.edu.uniquindio.odontologia.bean.SeguridadBean;
 import org.springframework.stereotype.Component;
-
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

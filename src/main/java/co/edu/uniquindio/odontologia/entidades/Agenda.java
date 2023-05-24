@@ -3,11 +3,10 @@ package co.edu.uniquindio.odontologia.entidades;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+@Generated
 @Entity
 @Getter
 @Setter

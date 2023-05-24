@@ -19,15 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-public class
-OdontologoServicioTest {
+public class OdontologoServicioTest {
 
     @Autowired
     private OdontologoServicio odontologoServicio;
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void loginTest() {
+    void loginTest() {
         try {
 
             Odontologo odontologo = odontologoServicio.login("luisa.lopez@example.com", "secreto456");
@@ -39,7 +38,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void crearAgendaTest() throws Exception {
+     void crearAgendaTest() throws Exception {
         Odontologo odontologo = odontologoServicio.obtenerOdontologo(1);
         Paciente paciente = odontologoServicio.obtenerPaciente(11111111);
         Agenda agenda = Agenda.builder().hora(LocalTime.of(12,30)).fecha(LocalDate.of(2023,5,12)).estado("Por confirmar").odontologo(odontologo).paciente(paciente).build();
@@ -49,7 +48,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void crearOdontologoTest() throws Exception {
+     void crearOdontologoTest() throws Exception {
         Odontologo odontologo = Odontologo.builder().nombre("p").telefono("1").direccion("1").correo("1@gf.com").password("1234").build();
         Odontologo createdoOdontologo = odontologoServicio.crearOdontologo(odontologo);
         assertNotNull(createdoOdontologo);
@@ -57,7 +56,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void actualizarAgendaTest() {
+    void actualizarAgendaTest() {
         try {
             Agenda agenda = odontologoServicio.obtenerAgenda(1111);
             agenda.setEstado("Sin confirmar");
@@ -73,6 +72,7 @@ OdontologoServicioTest {
     void eliminarAgendaTest() {
         try {
             odontologoServicio.eliminarAgenda(1111);
+            assertThrows(Exception.class, () -> odontologoServicio.obtenerAgenda(1111));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -115,6 +115,7 @@ OdontologoServicioTest {
     void eliminarHistorialCitaTest() {
         try {
             odontologoServicio.eliminarHistorialCita(1);
+            assertThrows(Exception.class, () -> odontologoServicio.obtenerHistorialCita(1));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -167,6 +168,7 @@ OdontologoServicioTest {
     void eliminarHistorialMedicoTest() {
         try {
             odontologoServicio.eliminarHistorialMedico(1);
+            assertThrows(Exception.class, () -> odontologoServicio.obtenerHistorialMedico(1));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -174,7 +176,7 @@ OdontologoServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void listarHistorialMedicosTest() {
+    void listarHistorialMedicosTest() {
         List<HistorialMedico> historialMedicos = odontologoServicio.listarHistorialMedicos();
         assertNotNull(historialMedicos);
         assertFalse(historialMedicos.isEmpty());
@@ -207,6 +209,7 @@ OdontologoServicioTest {
     void eliminarConcentimientoTest() {
         try {
             odontologoServicio.eliminarConcentimiento(1);
+            assertThrows(Exception.class, () -> odontologoServicio.obtenerConcentimiento(1));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -261,6 +264,7 @@ OdontologoServicioTest {
     void eliminarHistorialTratamientoTest() {
         try {
             odontologoServicio.eliminarHistorialTratamiento(1);
+            assertThrows(Exception.class, () -> odontologoServicio.obtenerHistorialTratamiento(1));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -312,6 +316,7 @@ OdontologoServicioTest {
     void eliminarInfoBasicaTest() {
         try {
             odontologoServicio.eliminarInfoBasica(1);
+            assertThrows(Exception.class, () -> odontologoServicio.obtenerInfoBasica(1));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -353,6 +358,7 @@ OdontologoServicioTest {
     void eliminarInstrumentalTest() {
         try {
             odontologoServicio.eliminarInstrumental(1);
+            assertThrows(Exception.class, () -> odontologoServicio.obtenerInstrumental(1));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -405,6 +411,7 @@ OdontologoServicioTest {
     void eliminarOdontogramaTest() {
         try {
             odontologoServicio.eliminarOdontograma(1);
+            assertThrows(Exception.class, () -> odontologoServicio.obtenerOdontograma(1));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -457,6 +464,7 @@ OdontologoServicioTest {
     void eliminarPacienteTest() {
         try {
             odontologoServicio.eliminarPaciente(12345678);
+            assertThrows(Exception.class, () -> odontologoServicio.obtenerPaciente(12345678));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -508,6 +516,7 @@ OdontologoServicioTest {
     void eliminarTratamientoTest() {
         try {
             odontologoServicio.eliminarTratamiento(1);
+            assertThrows(Exception.class, () -> odontologoServicio.obtenerTratamiento(1));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
