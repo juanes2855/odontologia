@@ -5,6 +5,7 @@ import co.edu.uniquindio.odontologia.exceptions.ExcepcionServicios;
 import co.edu.uniquindio.odontologia.repo.*;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,6 +86,10 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public Agenda crearAgenda(Agenda agenda) {
+        LocalDate fechaActual = LocalDate.now();
+        if (agenda.getFecha().isBefore(fechaActual)) {
+            throw new IllegalArgumentException("La fecha de la agenda debe ser mayor a la fecha actual");
+        }
         return agendaRepo.save(agenda);
     }
 
@@ -94,6 +99,10 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
         if (guardado.isEmpty()) {
             throw new ExcepcionServicios(AGENDA_NOEXISTE);
+        }
+        LocalDate fechaActual = LocalDate.now();
+        if (agenda.getFecha().isBefore(fechaActual)) {
+            throw new IllegalArgumentException("La fecha de la agenda debe ser mayor a la fecha actual");
         }
 
         return agendaRepo.save(agenda);
@@ -433,6 +442,33 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
     @Override
     public Paciente crearPaciente(Paciente paciente) {
+        // Validación del nombre del paciente
+        if (paciente.getNombre().length() <= 3) {
+            throw new IllegalArgumentException("El nombre del paciente debe tener más de 3 letras");
+        }
+
+        // Validación del documento de identidad
+        int documentoIdentidad = paciente.getDocumento();
+        if (String.valueOf(documentoIdentidad).length() <= 5) {
+            throw new IllegalArgumentException("El documento de identidad debe tener más de 5 dígitos");
+        }
+
+
+        // Validación del número de teléfono
+        if (paciente.getTelefono().length() < 5) {
+            throw new IllegalArgumentException("El número de teléfono debe tener al menos 5 dígitos");
+        }
+
+        //Validación de la direccion
+        if (paciente.getDireccion().length() < 2) {
+            throw new IllegalArgumentException("La direccion  debe tener al menos 2 dígitos");
+        }
+
+        // Validación de la fecha de nacimiento
+        LocalDate fechaActual = LocalDate.now();
+        if (paciente.getFechaNacimiento().isAfter(fechaActual)) {
+            throw new IllegalArgumentException("La fecha de nacimiento no puede ser mayor a la fecha actual");
+        }
         return pacienteRepo.save(paciente);
     }
 
@@ -442,6 +478,34 @@ public class OdontologoServicioImpl implements OdontologoServicio {
 
         if (guardado.isEmpty()) {
             throw new  ExcepcionServicios(PACIENTE_NOEXISTE);
+        }
+
+        // Validación del nombre del paciente
+        if (paciente.getNombre().length() <= 3) {
+            throw new IllegalArgumentException("El nombre del paciente debe tener más de 3 letras");
+        }
+
+        // Validación del documento de identidad
+        int documentoIdentidad = paciente.getDocumento();
+        if (String.valueOf(documentoIdentidad).length() <= 5) {
+            throw new IllegalArgumentException("El documento de identidad debe tener más de 5 dígitos");
+        }
+
+
+        // Validación del número de teléfono
+        if (paciente.getTelefono().length() < 5) {
+            throw new IllegalArgumentException("El número de teléfono debe tener al menos 5 dígitos");
+        }
+
+        //Validación de la direccion
+        if (paciente.getDireccion().length() < 2) {
+            throw new IllegalArgumentException("La direccion  debe tener al menos 2 dígitos");
+        }
+
+        // Validación de la fecha de nacimiento
+        LocalDate fechaActual = LocalDate.now();
+        if (paciente.getFechaNacimiento().isAfter(fechaActual)) {
+            throw new IllegalArgumentException("La fecha de nacimiento no puede ser mayor a la fecha actual");
         }
 
         return pacienteRepo.save(paciente);

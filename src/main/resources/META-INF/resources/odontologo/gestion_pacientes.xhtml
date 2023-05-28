@@ -11,55 +11,55 @@
     <ui:define name="title">Gestionar Pacientes</ui:define>
     <ui:define name="content">
         <div class="container mt-4 mb-4">
+            <p:panel header="Gestionar Pacientes">
+                <h:form id="crud_paciente">
+                    <p:toolbar>
+                        <p:toolbarGroup>
+                            <p:commandButton value="Agregar" icon="pi pi-plus" styleClass="ui-button-success me-3"
+                                             action="#{pacienteBean.crearPacienteDialogo}" update="dialogo_crear" oncomplete="PF('crear_paciente').show()"/>
+                            <p:commandButton id="btn_borrar" value="#{pacienteBean.textoBtnBorrar}" icon="pi pi-trash" disabled="#{pacienteBean.pacientesSeleccionados.size()==0}" styleClass="ui-button-danger"
+                                             action="#{pacienteBean.eliminarPaciente}" update="crud_paciente:lista,@this" />
+                        </p:toolbarGroup>
 
-            <h:form id="crud_paciente">
-                <p:toolbar>
-                    <p:toolbarGroup>
-                        <p:commandButton value="Agregar" icon="pi pi-plus" styleClass="ui-button-success me-3"
-                                         action="#{pacienteBean.crearPacienteDialogo}" update="dialogo_crear" oncomplete="PF('crear_paciente').show()"/>
-                        <p:commandButton id="btn_borrar" value="#{pacienteBean.textoBtnBorrar}" icon="pi pi-trash" disabled="#{pacienteBean.pacientesSeleccionados.size()==0}" styleClass="ui-button-danger"
-                                         action="#{pacienteBean.eliminarPaciente}" update="crud_paciente:lista,@this" />
-                    </p:toolbarGroup>
+                    </p:toolbar>
 
-                </p:toolbar>
-
-                <p:dataTable id="lista"
-                             value="#{pacienteBean.pacientes}" var="paciente"
-                             paginator="true" rows="10"
-                             rowKey="#{paciente.documento}"
-                             paginatorPosition="bottom"
-                             selection="#{pacienteBean.pacientesSeleccionados}">
-
-
-                    <p:ajax event="rowSelect" update="crud_paciente:btn_borrar" />
-                    <p:ajax event="rowUnselect" update="crud_paciente:btn_borrar" />
-                    <p:ajax event="rowSelectCheckbox" update="crud_paciente:btn_borrar" />
-                    <p:ajax event="rowUnselectCheckbox" update="crud_paciente:btn_borrar" />
-                    <p:ajax event="toggleSelect" update="crud_paciente:btn_borrar" />
-
-                    <p:column selectionMode="multiple" exportable="false" />
-
-                    <p:column headerText="Documento">
-                        <h:outputText value="#{paciente.documento}" />
-                    </p:column>
-
-                    <p:column headerText="Nombre">
-                        <h:outputText value="#{paciente.nombre}" />
-                    </p:column>
-
-                    <p:column headerText="Edad">
-                        <h:outputText value="#{paciente.getEdad()}" />
-                    </p:column>
+                    <p:dataTable id="lista"
+                                 value="#{pacienteBean.pacientes}" var="paciente"
+                                 paginator="true" rows="10"
+                                 rowKey="#{paciente.documento}"
+                                 paginatorPosition="bottom"
+                                 selection="#{pacienteBean.pacientesSeleccionados}">
 
 
+                        <p:ajax event="rowSelect" update="crud_paciente:btn_borrar" />
+                        <p:ajax event="rowUnselect" update="crud_paciente:btn_borrar" />
+                        <p:ajax event="rowSelectCheckbox" update="crud_paciente:btn_borrar" />
+                        <p:ajax event="rowUnselectCheckbox" update="crud_paciente:btn_borrar" />
+                        <p:ajax event="toggleSelect" update="crud_paciente:btn_borrar" />
 
-                    <p:column headerText="">
-                        <p:commandButton styleClass="edit-button rounded-button ui-button-success" icon="pi pi-pencil"
-                                         action="#{pacienteBean.seleccionarPaciente(paciente)}" update="dialogo_crear" oncomplete="PF('crear_paciente').show()"/>
-                    </p:column>
-                </p:dataTable>
-            </h:form>
+                        <p:column selectionMode="multiple" exportable="false" />
 
+                        <p:column headerText="Documento">
+                            <h:outputText value="#{paciente.documento}" />
+                        </p:column>
+
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{paciente.nombre}" />
+                        </p:column>
+
+                        <p:column headerText="Edad">
+                            <h:outputText value="#{paciente.getEdad()}" />
+                        </p:column>
+
+
+
+                        <p:column headerText="">
+                            <p:commandButton styleClass="edit-button rounded-button ui-button-success" icon="pi pi-pencil"
+                                             action="#{pacienteBean.seleccionarPaciente(paciente)}" update="dialogo_crear" oncomplete="PF('crear_paciente').show()"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:panel>
 
             <p:dialog id="dialogo_crear" widgetVar="crear_paciente" modal="true" header="#{pacienteBean.mensajeCrear}" showEffect="fade">
                 <h:form>

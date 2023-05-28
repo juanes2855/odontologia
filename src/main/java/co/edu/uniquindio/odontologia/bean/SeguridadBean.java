@@ -21,7 +21,7 @@ import java.util.List;
 @Scope("session")
 public class SeguridadBean implements Serializable {
 
-    private static final String LOGIN_BEAN = "login_bean";
+    private static final String LOGIN_BEAN = "login-bean";
     private static final String ALERTA = "Alerta";
 
     @Autowired

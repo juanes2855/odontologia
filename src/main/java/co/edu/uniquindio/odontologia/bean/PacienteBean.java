@@ -75,6 +75,7 @@ public class PacienteBean implements Serializable {
         }
     }
 
+
     public  void eliminarPaciente(){
         try{
             for(Paciente t: pacientesSeleccionados){
