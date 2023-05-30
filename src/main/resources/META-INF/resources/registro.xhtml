@@ -44,7 +44,14 @@
                         <p:message for="passw_conf_odontologo" />
 
                     </h:panelGrid>
-                    <p:commandButton value="Registrarse" action="#{odontologoBean.crearOdontologo}" update="@form" href="/" />
+                    <p:commandButton   value="Registrarse" action="#{odontologoBean.crearOdontologo}" update="@form" onclick="redirectToHomePage()"/>
+                    <script>
+                        function redirectToHomePage() {
+                            // Realizar cualquier función adicional que desees aquí antes de redireccionar
+
+                            window.location.href = "/"; // Redireccionar a la página de inicio
+                        }
+                    </script>
                     <p:growl for="mensaje_bean" showDetail="true" />
                 </h:form>
             </p:panel>
