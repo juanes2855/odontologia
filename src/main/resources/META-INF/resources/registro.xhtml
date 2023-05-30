@@ -16,7 +16,39 @@
         <div class="container mt-4 mb-4" >
 
             <p:panel header="Registro odontologo">
+                <h:form>
+                    <h:panelGrid columns="3" cellpadding="5">
 
+                        <p:outputLabel for="nombre_odontologo" value="Nombre: " />
+                        <p:inputText id="nombre_odontologo" value="#{odontologoBean.odontologo.nombre}" required="true" />
+                        <p:message for="nombre_odontologo" />
+
+                        <p:outputLabel for="correo_odontologo" value="Email: " />
+                        <p:inputText id="correo_odontologo" value="#{odontologoBean.odontologo.correo}" required="true" />
+                        <p:message for="correo_odontologo" />
+
+                        <p:outputLabel for="telefono_odontologo" value="Telefono: " />
+                        <p:inputText id="telefono_odontologo" value="#{odontologoBean.odontologo.telefono}" required="true" />
+                        <p:message for="telefono_odontologo" />
+
+                        <p:outputLabel for="direccion_odontologo" value="Direccción: " />
+                        <p:inputText id="direccion_odontologo" value="#{odontologoBean.odontologo.direccion
+
+                        }" required="true" />
+                        <p:message for="direccion_odontologo" />
+
+                        <p:outputLabel for="passw_odontologo" value="Contraseña: " />
+                        <p:password id="passw_odontologo" value="#{odontologoBean.odontologo.password}" required="true" feedback="true" inline="true" />
+                        <p:message for="passw_odontologo" />
+
+                        <p:outputLabel for="passw_conf_odontologo" value="Confirmar contraseña: " />
+                        <p:password id="passw_conf_odontologo" value="#{odontologoBean.confirmacionPassword}" required="true" />
+                        <p:message for="passw_conf_odontologo" />
+
+                    </h:panelGrid>
+                    <p:commandButton value="Registrase" action="#{odontologoBean.crearOdontologo}" update="@form" />
+                    <p:growl for="mensaje_bean" showDetail="true" />
+                </h:form>
             </p:panel>
 
         </div>

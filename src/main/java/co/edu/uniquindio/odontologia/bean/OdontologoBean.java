@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 @Generated
@@ -23,11 +25,33 @@ public class OdontologoBean implements Serializable {
     @Autowired
     private transient OdontologoServicio odontologoServicio;
 
+    @Getter @Setter
+    private String confirmacionPassword;
+
     @Getter
     @Setter
     private Odontologo odontologo;
+
+
     @PostConstruct
     public void init(){
         odontologo = new Odontologo();
+    }
+
+    public void crearOdontologo(){
+        try{
+            if(odontologo.getPassword().equals(confirmacionPassword)){
+                odontologoServicio.crearOdontologo(odontologo);
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, ALERTA, "Registro exitoso!");
+                FacesContext.getCurrentInstance().addMessage(MENSAJE_BEAN, fm);
+            }else{
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, ALERTA, "Las contraseñas no coinciden");
+                FacesContext.getCurrentInstance().addMessage(MENSAJE_BEAN, fm);
+            }
+
+        }catch (Exception e){
+            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, ALERTA, e.getMessage());
+            FacesContext.getCurrentInstance().addMessage(MENSAJE_BEAN,fm);
+        }
     }
 }

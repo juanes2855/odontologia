@@ -10,6 +10,7 @@ public interface OdontologoServicio {
     Odontologo login(String correo, String password)  throws ExcepcionServicios;
     Odontologo crearOdontologo(Odontologo odontologo);
     List<Odontologo> listarOdontologos();
+    void enviarEnlaceRecuperacion(String correo) throws ExcepcionServicios;
 
 
     Agenda crearAgenda(Agenda agenda);
@@ -80,4 +81,6 @@ public interface OdontologoServicio {
     List<Tratamiento> listarTratamientos();
     Tratamiento obtenerTratamiento(Integer codigo) throws ExcepcionServicios;
     Odontologo obtenerOdontologo(int id) throws ExcepcionServicios;
+
+    boolean cambiarPassword(String param1, String param2, String password) throws Exception;;
 }

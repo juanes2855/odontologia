@@ -76,5 +76,21 @@ public class SeguridadBean implements Serializable {
         return "/index?faces-redirect=true";
     }
 
+    public void recuperarPassword(){
+        try {
+            if(!email.isEmpty()){
+                odontologoServicio.enviarEnlaceRecuperacion( email );
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Se ha enviado el correo de recuperación de la contraseña");
+                FacesContext.getCurrentInstance().addMessage("login-bean", fm);
+            }else{
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", "Debe escribir el correo");
+                FacesContext.getCurrentInstance().addMessage("login-bean", fm);
+            }
+        } catch (Exception e) {
+            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("login-bean", fm);
+        }
+    }
+
 
 }

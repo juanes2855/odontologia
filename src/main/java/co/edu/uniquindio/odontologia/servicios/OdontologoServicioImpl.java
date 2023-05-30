@@ -3,14 +3,25 @@ package co.edu.uniquindio.odontologia.servicios;
 import co.edu.uniquindio.odontologia.entidades.*;
 import co.edu.uniquindio.odontologia.exceptions.ExcepcionServicios;
 import co.edu.uniquindio.odontologia.repo.*;
+import org.jasypt.util.password.StrongPasswordEncryptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.jasypt.util.text.AES256TextEncryptor;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class OdontologoServicioImpl implements OdontologoServicio {
+
+    @Autowired
+    private HttpServletRequest request;
+
     private static final String AGENDA_NOEXISTE = "La agenda no existe";
     private static final String HISTORIALMEDICO_NOEXISTE = "El historial medico no existe";
     private static final String CONCENTIMIENTO_NOEXISTE = "El concentimiento no existe";
@@ -32,8 +43,9 @@ public class OdontologoServicioImpl implements OdontologoServicio {
     private final OdontologoRepo odontologoRepo;
     private final PacienteRepo pacienteRepo;
     private final TratamientoRepo tratamientoRepo;
+    private final EmailServicio emailServicio;
 
-    public OdontologoServicioImpl(AgendaRepo agendaRepo, ConcentimientoRepo concentimientoRepo, HistorialCitaRepo historialCitaRepo, HistorialMedicoRepo historialMedicoRepo, HistorialTratamientoRepo historialTratamientoRepo, InfoBasicaRepo infoBasicaRepo, InstrumentalRepo instrumentalRepo, OdontogramaRepo odontogramaRepo, OdontologoRepo odontologoRepo, PacienteRepo pacienteRepo, TratamientoRepo tratamientoRepo) {
+    public OdontologoServicioImpl(AgendaRepo agendaRepo, ConcentimientoRepo concentimientoRepo, HistorialCitaRepo historialCitaRepo, HistorialMedicoRepo historialMedicoRepo, HistorialTratamientoRepo historialTratamientoRepo, InfoBasicaRepo infoBasicaRepo, InstrumentalRepo instrumentalRepo, OdontogramaRepo odontogramaRepo, OdontologoRepo odontologoRepo, PacienteRepo pacienteRepo, TratamientoRepo tratamientoRepo, EmailServicio emailServicio) {
         this.agendaRepo = agendaRepo;
         this.concentimientoRepo = concentimientoRepo;
         this.historialCitaRepo = historialCitaRepo;
@@ -45,6 +57,7 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         this.odontologoRepo = odontologoRepo;
         this.pacienteRepo = pacienteRepo;
         this.tratamientoRepo = tratamientoRepo;
+        this.emailServicio = emailServicio;
     }
 
     @Override
@@ -73,6 +86,67 @@ public class OdontologoServicioImpl implements OdontologoServicio {
         return odontologoRepo.findAll();
     }
 
+    @Override
+    public void enviarEnlaceRecuperacion(String correo) throws ExcepcionServicios {
+        Odontologo odontologo = odontologoRepo.findByCorreo(correo).orElse(null);
+
+        if(odontologo == null){
+            throw new ExcepcionServicios("El correo no existe");
+        }
+
+        String[] params = generarParamsCifrados(correo);
+        String baseURL = request.getRequestURL().toString().replace(request.getRequestURI(), request.getContextPath());
+        emailServicio.enviarEmail("Cambiar contraseña", "Ir a la siguiente url para cambiar su contraseña: "+baseURL+"/cambiar_password.xhtml?p1="+params[0]+"&p2="+params[1], correo);
+    }
+
+    @Override
+    public boolean cambiarPassword(String param1, String param2, String nuevaPassword) throws Exception {
+
+        String[] params = obtenerParamsCifrados(param1, param2);
+        Odontologo guardado = odontologoRepo.findByCorreo(params[0]).orElse(null);
+
+        if(guardado == null){
+            throw new Exception("El Odontologo no existe");
+        }
+
+        //StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
+        guardado.setPassword(nuevaPassword);
+        odontologoRepo.save(guardado);
+
+        return true;
+    }
+
+    private String[] generarParamsCifrados(String correo){
+        AES256TextEncryptor textEncryptor = new AES256TextEncryptor();
+        textEncryptor.setPassword("teclado");
+
+        LocalDateTime ldt = LocalDateTime.now();
+        ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Bogota"));
+
+        String param1 = textEncryptor.encrypt(correo);
+        String param2 = textEncryptor.encrypt( ""+zdt.toInstant().toEpochMilli() );
+
+        String[] respuesta = new String[]{param1, param2};
+
+        return respuesta;
+    }
+    private String[] obtenerParamsCifrados(String correo, String fecha){
+        correo = correo.replaceAll(" ", "+");
+        fecha = fecha.replaceAll(" ", "+");
+
+        AES256TextEncryptor textEncryptor = new AES256TextEncryptor();
+        textEncryptor.setPassword("teclado");
+
+        LocalDateTime ldt = LocalDateTime.now();
+        ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Bogota"));
+
+        String correoDes = textEncryptor.decrypt( correo );
+        String fechaDes = textEncryptor.decrypt( fecha );
+
+        String[] respuesta = new String[]{correoDes, fechaDes};
+
+        return respuesta;
+    }
     @Override
     public Odontologo obtenerOdontologo(int id) throws  ExcepcionServicios {
         Optional<Odontologo> guardado = odontologoRepo.findById(id);

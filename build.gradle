@@ -46,7 +46,10 @@ dependencies {
     implementation 'org.primefaces:primefaces:12.0.0'
     implementation 'org.joinfaces:jsf-spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.jasypt:jasypt:1.9.3'
     runtimeOnly     'mysql:mysql-connector-java'
+
 }
 
 dependencies {
