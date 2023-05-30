@@ -32,9 +32,7 @@
                         <p:message for="telefono_odontologo" />
 
                         <p:outputLabel for="direccion_odontologo" value="Direccción: " />
-                        <p:inputText id="direccion_odontologo" value="#{odontologoBean.odontologo.direccion
-
-                        }" required="true" />
+                        <p:inputText id="direccion_odontologo" value="#{odontologoBean.odontologo.direccion}" required="true" />
                         <p:message for="direccion_odontologo" />
 
                         <p:outputLabel for="passw_odontologo" value="Contraseña: " />
@@ -46,7 +44,7 @@
                         <p:message for="passw_conf_odontologo" />
 
                     </h:panelGrid>
-                    <p:commandButton value="Registrase" action="#{odontologoBean.crearOdontologo}" update="@form" />
+                    <p:commandButton value="Registrarse" action="#{odontologoBean.crearOdontologo}" update="@form" href="/" />
                     <p:growl for="mensaje_bean" showDetail="true" />
                 </h:form>
             </p:panel>
